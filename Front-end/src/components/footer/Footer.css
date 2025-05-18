@@ -1,0 +1,161 @@
+.footer {
+    background-color: #0e0e0e;
+    color: #ccc;
+    padding: 60px 20px 30px;
+    font-family: 'Segoe UI', sans-serif;
+    margin-top: 20px;
+    border-top: 1px solid #555555;
+    box-shadow: 0 -2px 12px rgba(175, 175, 175, 0.3);
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #00ffe7, #7a5fff);
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .logo-wrapper:hover ~ .footer::before {
+    opacity: 0.25;
+    animation: pulseAura 2s infinite ease-in-out;
+  }
+  
+  .footer.footer-glow::before {
+    opacity: 0.25;
+    animation: pulseAura 2s infinite ease-in-out;
+  }
+  
+  .footer-quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #9ad0ff;
+    min-height: 80px;
+    margin: 0;
+    z-index: 1;
+    position: relative;
+  }
+  
+  .footer-quote span {
+    display: block;
+    font-size: 1rem;
+    margin-top: 8px;
+    color: #888;
+  }
+  
+  .footer-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  
+  /* NOVO: aura só no logo */
+  .logo-wrapper {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+  }
+  
+  .logo-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.25), rgba(122, 95, 255, 0.2));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .logo-wrapper:hover::before {
+    opacity: 1;
+    animation: pulseAura 2s infinite ease-in-out;
+  }
+  
+  .footer-logo {
+    height: 180px;
+    filter: drop-shadow(0 0 10px rgba(119, 0, 255, 0.8));
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footer-contact div {
+    text-align: left;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  
+  .footer-contact strong {
+    color: #fff;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+  }
+  
+  .footer > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes pulseAura {
+    0% {
+      opacity: 0.15;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 0.15;
+      transform: scale(1);
+    }
+  }
+  
+  /* Swiper */
+  .footer-top .swiper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .footer-top .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    pointer-events: none;
+  }
+  
+  .footer-top .swiper-slide.swiper-slide-active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+  }
+  

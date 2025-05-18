@@ -1,0 +1,126 @@
+.registo-container {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  background-color: #0d1117;
+  border-radius: 16px;
+  color: #f0f6fc;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+.registo-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background-color: #0d1117;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.registo-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  color: #58a6ff;
+}
+
+.registo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.registo-form input,
+.registo-form select {
+  width: 100%;
+}
+
+input, select {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+  background-color: #161b22;
+  color: #f0f6fc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #8b949e;
+}
+
+select option {
+  background-color: #0d1117;
+}
+
+.registo-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.registo-row input,
+.registo-row select {
+  flex: 1;
+}
+
+.registo-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #c9d1d9;
+  gap: 0.2rem; /* controla a distância entre o quadrado e o texto */
+}
+
+.registo-checkbox input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #0d1117;
+  cursor: pointer;
+  position: relative;
+}
+
+.registo-checkbox input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: #58a6ff;
+  font-size: 12px;
+  position: absolute;
+  left: 2px;
+  top: -1px;
+}
+
+.registo-btn {
+  background-color: #238636;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.registo-btn:hover {
+  background-color: #2ea043;
+}
+
+
+
+
+
+
+

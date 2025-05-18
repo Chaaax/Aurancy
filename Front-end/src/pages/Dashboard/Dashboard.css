@@ -1,0 +1,35 @@
+.dashboard-content {
+    display: flex;
+  }
+  
+  .dashboard-main {
+    padding: 20px;
+    width: 100%;
+    background-color: #1e1e1e; /* escuro como o fundo geral */
+    min-height: calc(100vh - 60px);
+    color: white;
+  }
+  
+  .dashboard-main.with-sidebar {
+    margin-left: 200px;
+  }
+  
+  .dashboard-main.full {
+    margin-left: 0;
+  }
+  
+  .dashboard-wrapper {
+    position: relative;
+  }
+  
+  .sidebar-overlay {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    backdrop-filter: blur(4px); /* <--- aqui está o blur! */
+    background-color: rgba(0, 0, 0, 0.2); /* escurece ligeiramente */
+    z-index: 998;
+    transition: backdrop-filter 0.3s ease;
+  }
