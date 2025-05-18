@@ -8,21 +8,15 @@ Este projeto foi criado no âmbito de um trabalho prático universitário na ár
 
 🛠️ Tecnologias Utilizadas
 🖥️ Frontend
-React – Interface moderna e reativa
+React 
 
-Vite – Build rápido e eficiente
-
-Tailwind CSS – Estilização rápida e responsiva
-
-React Router – Navegação entre páginas com rotas protegidas
-
-LocalStorage – Armazenamento do token JWT no cliente
+Vite 
 
 ⚙️ Backend
-Node.js + Express.js – API REST leve e eficiente
+Node.js 
 
-Prisma ORM – Comunicação com base de dados relacional
+Prisma ORM 
 
-JWT – Autenticação segura com tokens
+JWT 
 
-bcrypt – Encriptação de palavras-passe
+bcrypt 
