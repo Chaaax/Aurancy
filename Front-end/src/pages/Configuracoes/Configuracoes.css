@@ -1,0 +1,144 @@
+.config-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0f1115;
+}
+
+.menu-lateral {
+  width: 280px; /* aumentado */
+  padding: 2rem;
+  background-color: #0f1115; /* igual ao fundo */
+  color: #ccc;
+  border-right: none; /* removida a separação */
+}
+
+.menu-lateral h2 {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 1.5rem;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-lateral li {
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-size: 0.95rem;
+}
+
+.menu-lateral li:hover {
+  background-color: #1f222a;
+  color: #fff;
+}
+
+.menu-lateral li.ativo {
+  background-color: #2684ff;
+  color: white;
+}
+
+.configuracoes-layout {
+  flex: 1;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.secao-placeholder {
+  color: #999;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+/* --------- Perfil Card --------- */
+.perfil-card {
+  background: #1c1e24;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  color: white;
+}
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.perfil-foto-wrapper {
+  position: relative;
+  margin-right: 1.5rem;
+}
+
+.perfil-foto {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #36c276;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.perfil-foto:hover {
+  transform: scale(1.05);
+}
+
+.perfil-upload-overlay {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background: #222;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #ccc;
+  border: 1px solid #333;
+}
+
+.perfil-info-main h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.perfil-info-main p {
+  margin: 4px 0 10px;
+  color: #aaa;
+}
+
+.perfil-edit-btn {
+  background-color: #30a14e;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.perfil-edit-btn:hover {
+  background-color: #259142;
+}
+
+.perfil-info-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #2a2d33;
+  padding-bottom: 4px;
+}
+
+.perfil-label {
+  font-weight: 600;
+  color: #ccc;
+}

@@ -1,0 +1,51 @@
+.submenu-container {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  padding-top: 1.2rem; /* Alinha com o título da esquerda */
+}
+
+.submenu-column {
+  min-width: 240px;
+}
+
+.submenu-title {
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+.submenu-button {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  margin-bottom: 0.75rem;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submenu-button:hover {
+  background-color: #334155;
+  transform: translateX(2px);
+}
+
+.submenu-button.active {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 600;
+  border: 1px solid #3b82f6;
+}
+
+.submenu-content {
+  flex: 1;
+  padding-top: 0.5rem;
+}
+

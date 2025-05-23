@@ -3,9 +3,11 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Registo from './pages/Registo/Registo';
-import Perfil from './pages/Perfil/Perfil';
+import Configuracoes from './pages/Configuracoes/Configuracoes';
+import SubmenuAgenda from './pages/Configuracoes/sections/Agenda/SubmenuAgenda/SubmenuAgenda'
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import PrivateRoute from './components/PrivateRoute'; 
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -13,47 +15,39 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      
       <Route
         path="/login"
         element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />}
       />
-      <Route
-        path="/dashboard"
-        element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
-      />
-
+      
       <Route
         path="/registo"
         element={isAuthenticated ? <Navigate to="/dashboard" /> : <Registo />}
       />
 
-      <Route path="/perfil" element={<Perfil />} 
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
       />
+
+      <Route
+        path="/configuracoes"
+        element={
+          <PrivateRoute>
+            <Configuracoes />
+          </PrivateRoute>
+        }
+      />
+
+      <Route path="agenda" element={<SubmenuAgenda />} />
+
     </Routes>
   );
 }
 
 export default App;
-
-
-
-/*
-// Versão futura: com React Router para várias páginas
-import { Routes, Route } from 'react-router-dom'
-import Dashboard from './pages/Dashboard'
-import Transacoes from './pages/Transacoes'
-import NovaTransacao from './pages/NovaTransacao'
-
-function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/transacoes" element={<Transacoes />} />
-      <Route path="/nova" element={<NovaTransacao />} />
-    </Routes>
-  )
-}
-
-export default App
-*/
-

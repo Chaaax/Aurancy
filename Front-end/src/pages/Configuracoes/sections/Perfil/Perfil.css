@@ -1,0 +1,137 @@
+/* Perfil.css */
+.perfil-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0f1115;
+  color: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.perfil-card {
+  margin: 60px auto;
+  background-color: #1e1e1e;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  max-width: 600px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+}
+
+.perfil-foto-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.perfil-foto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #4caf50;
+  object-fit: cover;
+}
+
+.perfil-upload-overlay {
+  position: absolute;
+  bottom: -27px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(139, 137, 137, 0.1);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 4px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.perfil-upload-overlay:hover {
+  background-color: rgba(40, 242, 5, 0.8);
+}
+
+.perfil-info-main {
+  flex: 1;
+}
+
+.perfil-nome {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+}
+
+.perfil-email {
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.perfil-edit-btn {
+  background-color: #4caf50;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.perfil-edit-btn:hover {
+  background-color: #45a049;
+}
+
+.perfil-info {
+  margin-top: 20px;
+}
+
+.perfil-info-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+  font-size: 1.05rem;
+}
+
+.perfil-label {
+  font-weight: 600;
+  color: #ccc;
+  min-width: 170px;
+}
+
+.perfil-loading,
+.perfil-erro {
+  margin: auto;
+  font-size: 1.3rem;
+  color: #bbb;
+  text-align: center;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .perfil-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .perfil-info-line {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+ 
+
+  .perfil-label {
+    min-width: unset;
+  }
+}

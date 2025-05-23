@@ -33,3 +33,36 @@
     z-index: 998;
     transition: backdrop-filter 0.3s ease;
   }
+
+  /*grafico de barras*/
+.dashboard-graficos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5rem;
+  margin-top: 2rem;
+}
+
+.grafico-item {
+  flex: 0 0 48%; /* ocupa ~metade com espaço entre */
+  max-width: 480px;
+  min-width: 360px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+  .dashboard-graficos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grafico-item {
+    max-width: 100%;
+  }
+}

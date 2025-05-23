@@ -1,0 +1,42 @@
+.grafico-despesas {
+  padding: 1rem;
+  background-color: #1f2937;
+  border-radius: 30px;
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.grafico-despesas h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.selecao-tempo {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.selecao-tempo select {
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #374151;
+  background-color: #111827;
+  color: #f9fafb;
+  font-size: 0.875rem;
+}
+
+.recharts-legend-wrapper {
+  max-height: 80px;
+  overflow-y: auto;
+  padding-top: 0.5rem;
+}
+
+

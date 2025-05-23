@@ -50,7 +50,7 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} – Financial App. Todos os direitos reservados.</p>
+        <p>© {new Date().getFullYear()} – Aurancy. Todos os direitos reservados.</p>
       </div>
     </footer>
   )

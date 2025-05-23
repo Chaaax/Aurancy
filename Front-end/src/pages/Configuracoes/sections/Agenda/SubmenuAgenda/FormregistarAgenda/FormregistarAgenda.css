@@ -1,0 +1,64 @@
+import { useForm } from 'react-hook-form'
+import './FormEventoFinanceiro.css'
+
+export default function FormEventoFinanceiro() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting, isSubmitSuccessful }
+  } = useForm()
+
+  const onSubmit = async (data) => {
+    try {
+      const token = localStorage.getItem('token')
+      const res = await fetch('http://localhost:3000/api/eventos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+      })
+
+      if (res.ok) {
+        alert('Evento criado com sucesso!')
+        reset()
+      } else {
+        const erro = await res.json()
+        alert(erro.error || 'Erro ao criar evento')
+      }
+    } catch (err) {
+      alert('Erro de rede')
+    }
+  }
+
+  return (
+    <form className="form-evento" onSubmit={handleSubmit(onSubmit)}>
+      <h3>📅 Novo Evento</h3>
+
+      <label>Título</label>
+      <input {...register('titulo', { required: true })} placeholder="Ex: Inspeção do carro" />
+      {errors.titulo && <span className="erro">Campo obrigatório</span>}
+
+      <label>Data</label>
+      <input type="date" {...register('data', { required: true })} />
+      {errors.data && <span className="erro">Data obrigatória</span>}
+
+      <label>Valor (€)</label>
+      <input type="number" step="0.01" {...register('valor')} placeholder="Opcional" />
+
+      <label>Categoria</label>
+      <input {...register('categoria')} placeholder="Ex: Manutenção, Seguros..." />
+
+      <label>Notas</label>
+      <textarea {...register('descricao')} placeholder="Detalhes ou lembrete opcional" />
+
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'A guardar...' : 'Guardar evento'}
+      </button>
+
+      {isSubmitSuccessful && <p className="sucesso">✅ Guardado com sucesso</p>}
+    </form>
+  )
+}

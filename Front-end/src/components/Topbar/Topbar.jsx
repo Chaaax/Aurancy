@@ -15,7 +15,7 @@ function Topbar({ toggleSidebar }) {
       </div>
       <div className="topbar-right">
         <FiSearch className="topbar-icon" />
-        <FaUserCircle className="topbar-icon" onClick={() => navigate('/Perfil')} />
+        <FaUserCircle className="topbar-icon" onClick={() => navigate('/configuracoes')} />
       </div>
     </header>
   )

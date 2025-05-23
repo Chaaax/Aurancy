@@ -1,0 +1,147 @@
+.form-despesa-container {
+  background-color: #1f2937;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.form-despesa-container h2 {
+  color: #f3f4f6;
+  margin-bottom: 1.5rem;
+}
+
+.form-despesa-container input,
+.form-despesa-container select,
+.form-despesa-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #111827;
+  color: #f3f4f6;
+  border: 1px solid #374151;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-despesa-container select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form-despesa-container textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-despesa-container label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
+
+.form-despesa-container button {
+  background-color: #3b82f6;
+  color: #fff;
+  padding: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-despesa-container button:hover {
+  background-color: #2563eb;
+}
+
+.form-despesa-container .erro {
+  color: #f87171;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.form-despesa-container .sucesso {
+  color: #4ade80;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+
+/*calendario*/
+/* Calendário principal */
+.react-datepicker {
+  background-color: #1f2937 !important;
+  border-radius: 10px !important;
+  color: #e5e7eb !important;
+  font-size: 14px !important;
+  border: none !important;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+.react-datepicker__header {
+  background-color: #111827 !important;
+  border-bottom: 1px solid #374151 !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: #e5e7eb !important;
+  font-weight: 500 !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #3b82f6 !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+}
+
+.react-datepicker__day--today {
+  border: 1px solid #3b82f6 !important;
+  border-radius: 50% !important;
+}
+
+.react-datepicker__navigation {
+  top: 10px !important;
+  width: 28px !important;
+  height: 28px !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #3b82f6 !important;
+  border-width: 2px 2px 0 0 !important;
+}
+
+.react-datepicker__month-select,
+.react-datepicker__year-select {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+  border: 1px solid #374151 !important;
+  border-radius: 6px !important;
+  padding: 6px 8px !important;
+  font-size: 14px !important;
+}
+.input-wrapper {
+  margin-bottom: 1rem;
+}
+
+.datepicker-field {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.calendar-icon {
+  color: #9ca3af !important;
+}

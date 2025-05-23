@@ -1,0 +1,140 @@
+
+.calendario-container {
+  padding: 1rem;
+  background-color: #111827;
+  border-radius: 20px;
+  max-width: 850px;
+  margin: 0 auto;
+  color: #f9fafb;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.fc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  background-color: #111827;
+  color: #f9fafb;
+  border-radius: 10px;
+}
+
+.fc-toolbar-title {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.5rem 0;
+}
+
+.fc-button {
+  background-color: #2563eb;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  transition: background-color 0.3s;
+}
+
+.fc-button:hover {
+  background-color: #1d4ed8;
+}
+
+.fc-daygrid-day-number {
+  color: #c7d2fe;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.fc-day-today {
+  background-color: rgba(59, 130, 246, 0.3) !important;
+  border: 1px solid #3b82f6;
+}
+
+.fc-event {
+  background-color: #3b82f6 !important;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fc-event-title {
+  color: white;
+}
+
+.card-evento {
+  position: absolute;
+  background-color: #1f2937;
+  color: #f9fafb;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+  width: 240px;
+  transform: translateY(10px);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.card-evento h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: #fbbf24;
+}
+
+.card-evento p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.card-evento .fechar {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #f87171;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+}
+
+/*cursor*/
+.fc-event {
+  cursor: pointer !important;
+}
+
+/*Marcar evento*/
+.btn-marcar-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.btn-marcar-evento {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-marcar-evento:hover {
+  background-color: #059669;
+}

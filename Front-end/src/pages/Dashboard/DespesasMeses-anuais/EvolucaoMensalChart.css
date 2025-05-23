@@ -1,0 +1,30 @@
+.grafico-evolucao {
+  padding: 1rem;
+  background-color: #1f2937;
+  border-radius: 30px;
+  color: #e5e7eb;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+.grafico-evolucao h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.selecao-ano {
+  margin-bottom: 1rem;
+}
+
+.selecao-ano select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #374151;
+  background-color: #111827;
+  color: #f9fafb;
+}

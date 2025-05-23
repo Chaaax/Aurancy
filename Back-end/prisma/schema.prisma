@@ -9,14 +9,60 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  email      String   @unique
-  password   String
-  fullName   String
-  birthDate  DateTime
-  country    String
-  phone      String
-  currency   String?
-  profile    String?
-  createdAt  DateTime @default(now())
+  id                  String              @id @default(uuid())
+  email               String              @unique
+  password            String
+  fullName            String
+  birthDate           DateTime
+  country             String
+  phone               String
+  currency            String?
+  profile             String?
+  createdAt           DateTime            @default(now())
+  profilePicture      String?
+  despesasMensais     DespesaMensal[]
+  despesasRecorrentes DespesaRecorrente[]
+  eventosFinanceiros  EventoFinanceiro[]
+}
+
+model DespesaMensal {
+  id          Int      @id @default(autoincrement())
+  descricao   String
+  valor       Float
+  categoria   String?
+  data        DateTime
+  recorrencia String   @default("única")
+  notas       String?
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@map("DespesasMensais")
+}
+
+model DespesaRecorrente {
+  id          Int      @id @default(autoincrement())
+  titulo      String
+  valor       Float
+  categoria   String?
+  dataInicio  DateTime
+  dataFim     DateTime
+  recorrencia String // 'mensal', 'anual', etc
+  notas       String?
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@map("DespesasRecorrentes")
+}
+
+model EventoFinanceiro {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  titulo      String
+  descricao   String?
+  data        DateTime
+  valor       Float?
+  categoria   String?
+  recorrencia String?
+  criadoEm    DateTime @default(now())
 }

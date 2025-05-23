@@ -1,0 +1,79 @@
+.form-evento {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #1f2937;
+  border-radius: 30px;
+  width: 440px;
+  max-width: 600px;
+  color: #e5e7eb;
+}
+
+.form-evento h3 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-linha {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-linha label {
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.form-linha input,
+.form-linha textarea {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #374151;
+  background-color: #111827;
+  color: #f9fafb;
+  font-size: 0.9rem;
+}
+
+.form-linha textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+button[type='submit'] {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type='submit']:hover {
+  background-color: #2563eb;
+}
+
+button[type='submit']:disabled {
+  background-color: #6b7280;
+  cursor: not-allowed;
+}
+
+.erro {
+  color: #f87171;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.sucesso {
+  color: #4ade80;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
