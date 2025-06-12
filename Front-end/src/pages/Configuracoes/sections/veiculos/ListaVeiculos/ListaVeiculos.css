@@ -1,0 +1,54 @@
+.lista-veiculos-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  color: #e5e7eb;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+}
+
+.lista-veiculos {
+  width: 320px;
+}
+
+.lista-veiculos h2 {
+  margin-bottom: 1rem;
+}
+
+.card-veiculo {
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  min-width: 280px;
+}
+
+.card-veiculo:hover,
+.card-veiculo.ativo {
+  background-color: #2563eb;
+  color: white;
+}
+
+.topo-info-linha {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  line-height: 1.4;
+}
+
+.card-veiculo strong {
+  font-size: 1rem;
+  color: white;
+  font-weight: 600;
+}
+
+.topo-extra {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  word-wrap: break-word;
+  margin-left: 0.75rem;
+}

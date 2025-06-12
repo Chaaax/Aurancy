@@ -14,9 +14,25 @@ function Login() {
     e.preventDefault();
 
     try {
-      const resposta = await loginAPI(email, password);
-      login(resposta.token); // atualiza o contexto e localStorage
-      navigate('/dashboard'); // funciona sem F5 agora!
+      const resposta = await loginAPI(email, password); // envia email + password
+      const token = resposta.token;
+
+      // Vai buscar o utilizador autenticado ao backend
+      const res = await fetch('http://localhost:3000/api/auth/me', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!res.ok) {
+        throw new Error('Falha ao obter dados do utilizador.');
+      }
+
+      const user = await res.json();
+
+      // Guarda no contexto o token e o utilizador
+      login(token, user);
+      navigate('/dashboard');
     } catch (error) {
       alert(error.message || 'Erro ao fazer login.');
     }
@@ -47,4 +63,7 @@ function Login() {
 }
 
 export default Login;
+
+
+
 

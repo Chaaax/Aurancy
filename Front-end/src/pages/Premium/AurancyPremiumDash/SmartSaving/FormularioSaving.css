@@ -1,0 +1,102 @@
+.formulario-saving {
+  background: linear-gradient(135deg, #1b1f3a, #2a2e4d);
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.formulario-saving h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.formulario-saving p {
+  font-size: 14px;
+  margin-bottom: 25px;
+  color: #b3b3b3;
+}
+
+.formulario-saving label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.formulario-saving input[type="text"],
+.formulario-saving input[type="number"] {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #2c2f4a;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.formulario-saving input[type="checkbox"],
+.formulario-saving input[type="radio"] {
+  margin-right: 8px;
+}
+
+.formulario-saving .checkbox-group,
+.formulario-saving .radio-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.formulario-saving button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.formulario-saving button:hover {
+  background: linear-gradient(90deg, #00aaff, #0055cc);
+}
+
+.error-text {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-top: 4px;
+  display: block;
+}
+
+.formulario-colapsado-card {
+  background: #56067a;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.btn-esconder-formulario,
+.btn-mostrar-formulario {
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #007acc;
+  color: rgb(53, 39, 236);
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-esconder-formulario:hover,
+.btn-mostrar-formulario:hover {
+  background-color: #005fa3;
+}

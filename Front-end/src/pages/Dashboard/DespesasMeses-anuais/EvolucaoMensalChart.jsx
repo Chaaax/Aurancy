@@ -4,7 +4,7 @@ import {
 } from 'recharts'
 import './EvolucaoMensalChart.css'
 
-const anosDisponiveis = Array.from({ length: 8 }, (_, i) => 2023 + i)
+const anosDisponiveis = Array.from({ length: 8 }, (_, i) => 2025 + i)
 const nomesMeses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 
 export default function EvolucaoMensalChart() {
@@ -23,11 +23,12 @@ export default function EvolucaoMensalChart() {
           headers: { Authorization: `Bearer ${token}` }
         })
         const result = await res.json()
+
         if (res.ok) {
           const dadosFormatados = result.map(item => ({
-            mes: nomesMeses[item.mes - 1],
-            total: item.total
-          }))
+              mes: nomesMeses[item.mes - 1],
+              total: (item.total || 0) + (item.subscricoes || 0)
+            }))
           setDados(dadosFormatados)
         } else {
           setErro(result.error || 'Erro ao obter dados')
@@ -56,7 +57,11 @@ export default function EvolucaoMensalChart() {
       {loading ? <p>A carregar...</p> : erro ? <p className="erro">{erro}</p> : (
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={dados}>
-            <XAxis dataKey="mes" />
+            <XAxis 
+              dataKey="mes" 
+              interval={0}
+              tick={{ fill: '#e0e0ff', fontSize: 13 }}
+            />
             <YAxis />
             <Tooltip />
             <Bar dataKey="total" fill="#10b981" />

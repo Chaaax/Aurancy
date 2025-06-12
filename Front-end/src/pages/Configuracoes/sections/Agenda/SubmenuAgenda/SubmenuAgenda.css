@@ -1,9 +1,3 @@
-.submenu-container {
-  display: flex;
-  gap: 3rem;
-  align-items: flex-start;
-  padding-top: 1.2rem; /* Alinha com o título da esquerda */
-}
 
 .submenu-column {
   min-width: 240px;

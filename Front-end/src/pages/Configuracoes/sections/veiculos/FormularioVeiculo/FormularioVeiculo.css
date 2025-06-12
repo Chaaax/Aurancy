@@ -1,0 +1,140 @@
+.form-veiculo {
+  background-color: #111827;
+  padding: 3rem;
+  border-radius: 30px;
+  color: #e5e7eb;
+  max-width: 700px;
+  margin-left: 2rem;
+  min-width: 700px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+  width: 100%;
+}
+
+.form-group label {
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #d1d5db;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #374151;
+  background-color: #1f2937;
+  color: white;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+  background-color: #273549;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* para ícone visível no fundo escuro */
+}
+
+.form-error {
+  color: #f87171;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.form-button {
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Secção opcional (ex: combustivel, seguro, inspeção) */
+.form-section-optional {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed #374151;
+  grid-column: span 2;
+}
+
+/* Estilos personalizados para react-select */
+.select__control {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: white !important;
+  min-height: 38px;
+  min-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.select__single-value,
+.select__input-container {
+  color: white !important;
+}
+
+.select__menu {
+  background-color: #1f2937 !important;
+  color: #fff !important;
+  z-index: 100 !important;
+}
+
+.select__menu-list {
+  max-height: 200px !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+}
+
+.select__option {
+  background-color: #1f2937 !important;
+  color: white !important;
+}
+
+.select__option--is-focused {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.select__option--is-selected {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-veiculo {
+    padding: 2rem;
+    min-width: unset;
+    max-width: 100%;
+  }
+}
+

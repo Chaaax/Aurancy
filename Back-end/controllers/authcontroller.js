@@ -68,12 +68,18 @@ const login = async (req, res) => {
     const token = jwt.sign(
       { userId: user.id },
       process.env.JWT_SECRET,
-      { expiresIn: '2h' }
+      { expiresIn: '30d' }
     )
 
-    res.status(200).json({
+   res.status(200).json({
       message: 'Login bem-sucedido!',
       token,
+      user: {
+        id: user.id,
+        email: user.email,
+        fullName: user.fullName,
+        premium: user.premium
+      }
     })
   } catch (error) {
     console.error('Erro ao fazer login:', error)
@@ -97,24 +103,20 @@ const getMe = async (req, res) => {
         currency: true,
         profile: true,
         profilePicture: true,
+        premium: true
       },
-    })
+    });
 
     if (!user) {
-      return res.status(404).json({ error: 'Utilizador não encontrado.' })
+      return res.status(404).json({ error: 'Utilizador não encontrado.' });
     }
 
-    // Agora o profilePicture já é um URL direto (público)
-    if (user.profilePicture) {
-      user.profilePictureUrl = user.profilePicture
-    }
-
-    res.status(200).json(user)
+    res.status(200).json(user); // profilePicture já é URL pública
   } catch (error) {
-    console.error('Erro ao obter utilizador:', error)
-    res.status(500).json({ error: 'Erro interno.' })
+    console.error('Erro ao obter utilizador:', error);
+    res.status(500).json({ error: 'Erro interno.' });
   }
-}
+};
 
 // GET /api/auth/user-profile
 const getUserProfile = async (req, res) => {
@@ -194,10 +196,29 @@ const uploadProfilePicture = [
   }
 ]
 
+  // Ativa o Premium para o utilizador autenticado
+  const ativarPremium = async (req, res) => {
+    try {
+      const userId = req.user.id;
+
+      await prisma.user.update({
+        where: { id: userId },
+        data: { premium: true }
+      });
+
+      res.status(200).json({ message: 'Aurancy Premium ativado com sucesso.' });
+    } catch (error) {
+      console.error('Erro ao ativar premium:', error);
+      res.status(500).json({ error: 'Erro ao ativar Aurancy Premium.' });
+    }
+  };
+
+
 module.exports = {
   register,
   login,
   getMe,
   getUserProfile,
   uploadProfilePicture,
+  ativarPremium,
 }

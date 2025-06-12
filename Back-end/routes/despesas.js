@@ -1,17 +1,18 @@
 const express = require('express')
 const router = express.Router()
 const { PrismaClient } = require('@prisma/client')
-const authenticateToken = require('../middlewares/auth') // usa o mesmo middleware
+const authenticateToken = require('../middlewares/auth')
 const gerarDespesasPendentes = require('../utils/gerarDespesasPendentes')
 
 const prisma = new PrismaClient()
 
-// ✅ Aplica o middleware a todas as rotas
+// ✅ Middleware global
 router.use(authenticateToken)
 
+// POST: Criar despesa
 router.post('/', async (req, res) => {
-  const { descricao, valor, categoria, data, recorrencia, notas } = req.body;
-  const userId = req.user.id  // já vem do middleware
+  const { descricao, valor, categoria, data, recorrencia, notas } = req.body
+  const userId = req.user.id
 
   if (!descricao || !valor || !data) {
     return res.status(400).json({ error: 'Campos obrigatórios em falta' })
@@ -19,16 +20,16 @@ router.post('/', async (req, res) => {
 
   try {
     const novaDespesa = await prisma.despesaMensal.create({
-    data: {
-      descricao,
-      valor: parseFloat(valor),
-      categoria,
-      data: new Date(data),
-      recorrencia,
-      notas,
-      userId
-    }
-  })
+      data: {
+        descricao,
+        valor: parseFloat(valor),
+        categoria,
+        data: new Date(data),
+        recorrencia,
+        notas,
+        userId
+      }
+    })
     res.status(201).json(novaDespesa)
   } catch (error) {
     console.error(error)
@@ -36,12 +37,12 @@ router.post('/', async (req, res) => {
   }
 })
 
+// GET: Todas as despesas
 router.get('/', async (req, res) => {
   const userId = req.user.id
 
   try {
-
-    await gerarDespesasPendentes(userId) // 👈 verifica e gera a recorrente
+    await gerarDespesasPendentes(userId)
 
     const despesas = await prisma.despesaMensal.findMany({
       where: { userId },
@@ -55,6 +56,7 @@ router.get('/', async (req, res) => {
   }
 })
 
+// GET: Despesas por mês
 router.get('/mensal', async (req, res) => {
   const userId = req.user.id
   const mes = parseInt(req.query.mes)
@@ -69,6 +71,9 @@ router.get('/mensal', async (req, res) => {
   const hoje = new Date()
 
   try {
+    // ✅ Gera despesas pendentes antes de analisar
+    await gerarDespesasPendentes(userId)
+
     const despesas = await prisma.despesaMensal.findMany({
       where: {
         userId,
@@ -105,7 +110,8 @@ router.get('/mensal', async (req, res) => {
       categorias[nome] += Number(ev.valor)
     })
 
-    res.json({ categorias })
+    const total = Object.values(categorias).reduce((acc, val) => acc + val, 0)
+    res.json({ categorias, total })
   } catch (error) {
     console.error('Erro ao obter despesas mensais:', error)
     res.status(500).json({ error: 'Erro interno ao processar despesas' })

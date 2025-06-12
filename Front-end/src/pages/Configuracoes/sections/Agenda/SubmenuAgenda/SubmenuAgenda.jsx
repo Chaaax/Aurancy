@@ -3,6 +3,8 @@ import './SubmenuAgenda.css'
 import AgendaFinanceira from '../../../../../components/Agenda/AgendaFinanceira'
 import FormEventoFinanceiro from './FormregistarAgenda/FormEventoFinanceiro'
 import { useSearchParams } from 'react-router-dom'
+import '../submenu-base.css';
+
 
 
 export default function SubmenuAgenda() {
@@ -16,7 +18,7 @@ export default function SubmenuAgenda() {
   return (
     <div className="submenu-container">
       <div className="submenu-column">
-        <h2 className="submenu-title">Gestão de agenda</h2>
+        <h2 className="submenu-title">Gestão de Agenda</h2>
         <ul style={{ listStyle: 'none', padding: 0 }}>
           {opcoes.map(opcao => (
             <li key={opcao.key}>
@@ -34,7 +36,6 @@ export default function SubmenuAgenda() {
       <div className="submenu-content">
         {secaoAtiva === 'agendar' && (
             <div>
-                <p style={{ color: '#e5e7eb' }}>📅 Formulário para criar um novo evento financeiro</p>
                 <FormEventoFinanceiro />
             </div>
         )}

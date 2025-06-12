@@ -6,6 +6,7 @@ import Topbar from '../../components/Topbar/Topbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import SubmenuDespesas from './sections/Despesas/SubmenuDespesas/SubmenuDespesas'
 import SubmenuAgenda from './sections/Agenda/SubmenuAgenda/SubmenuAgenda'
+import SubmenuVeiculo from './sections/veiculos/SubmenuVeiculos'
 import { useSearchParams, Outlet } from 'react-router-dom'
 
 function Configuracoes() {
@@ -29,7 +30,7 @@ function Configuracoes() {
       case 'agenda':
         return <SubmenuAgenda />
       case 'veiculos':
-        return <div className="secao-placeholder">Gestão de veículos (em breve)</div>
+        return <SubmenuVeiculo />
       case 'privacidade':
         return <div className="secao-placeholder">Dados pessoais e privacidade</div>
       default:

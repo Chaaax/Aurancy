@@ -1,0 +1,56 @@
+/* submenu-base.css - estilos comuns para todos os submenus (Agenda, Veículos, Despesas, etc.) */
+
+.submenu-button {
+  width: 100%;
+  max-width: 280px;
+  padding: 16px 20px;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #e0e0ff;
+  background-color: #1e1b3a;
+  border: 1px solid #6d28d9;
+  border-radius: 12px;
+  text-align: left;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 6px rgba(109, 40, 217, 0.3);
+}
+
+.submenu-button:hover {
+  background-color: #3c1e75;
+  color: #fff;
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+
+.submenu-button.active {
+  background-color: #6d28d9;
+  color: white;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.5);
+}
+
+.submenu-title {
+  color: #f9f9f9;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.submenu-container {
+  display: flex;
+  gap: 1.5rem; 
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.submenu-column {
+  flex: 0 0 240px; 
+  min-width: 220px;
+}
+
+.submenu-content {
+  flex: 1;
+  min-width: 380px;
+  margin-left: 0;    
+  padding-left: 0;     
+}

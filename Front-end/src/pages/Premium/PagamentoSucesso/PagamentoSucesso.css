@@ -1,0 +1,52 @@
+.sucesso-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1f1b2e, #12101a);
+  padding: 40px 20px;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sucesso-card {
+  background: #18181b;
+  border-radius: 20px;
+  padding: 50px 60px;
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.3);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  animation: aparecer 0.7s ease;
+}
+
+.sucesso-title {
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+  color: #22c55e;
+  text-shadow: 0 0 10px #22c55e66;
+}
+
+.sucesso-text {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.glow-text {
+  color: #facc15;
+  text-shadow: 0 0 10px #facc15aa;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

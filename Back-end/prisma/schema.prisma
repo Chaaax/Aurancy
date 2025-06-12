@@ -20,9 +20,14 @@ model User {
   profile             String?
   createdAt           DateTime            @default(now())
   profilePicture      String?
+  premium             Boolean             @default(false)
   despesasMensais     DespesaMensal[]
   despesasRecorrentes DespesaRecorrente[]
   eventosFinanceiros  EventoFinanceiro[]
+  veiculos            Veiculo[]
+  pagamentoRecorrente    PagamentoRecorrente[]
+  savingForms         SavingForm[]
+
 }
 
 model DespesaMensal {
@@ -65,4 +70,90 @@ model EventoFinanceiro {
   categoria   String?
   recorrencia String?
   criadoEm    DateTime @default(now())
+}
+
+//zona do veiculo
+
+model Veiculo {
+  id               Int                   @id @default(autoincrement())
+  userId           String
+  marca            String
+  modelo           String
+  matricula        String                @unique
+  ano              Int
+  mesEntrada       Int?
+  tipo             String
+  kmAtual          Int
+
+  //campos opcionais(teste)
+  combustivel      String?
+  ultimaInspecao   DateTime?
+  seguroAte        DateTime?    
+
+  user             User                  @relation(fields: [userId], references: [id])
+  manutencoes      Manutencao[]
+  historico        HistoricoManutencao[]
+}
+
+
+model Manutencao {
+  id              Int      @id @default(autoincrement())
+  veiculoId       Int
+  tipo            String
+  descricao       String?
+  dataProxima     DateTime
+  kmProximo       Int?
+  frequenciaMeses Int?
+  frequenciaKm    Int?
+  notificar       Boolean  @default(true)
+  veiculo         Veiculo  @relation(fields: [veiculoId], references: [id])
+  alertas         Alerta[]
+}
+
+model HistoricoManutencao {
+  id            Int      @id @default(autoincrement())
+  veiculoId     Int
+  tipo          String
+  dataRealizada DateTime
+  kmRealizado   Int
+  custo         Float
+  observacoes   String?
+  veiculo       Veiculo  @relation(fields: [veiculoId], references: [id])
+}
+
+model Alerta {
+  id           Int        @id @default(autoincrement())
+  manutencaoId Int
+  dataAlerta   DateTime
+  tipoAlerta   String // ex: 'email', 'app'
+  notificado   Boolean    @default(false)
+  manutencao   Manutencao @relation(fields: [manutencaoId], references: [id])
+}
+
+
+model PagamentoRecorrente {
+  id              String   @id @default(uuid())
+  userId          String
+  nome            String
+  valor           Float
+  dataRenovacao   Int      // dia do mês
+  categoria       String?
+  ultimoPagamento DateTime?
+  criadoEm        DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id])
+}
+
+model SavingForm {
+  id              String   @id @default(cuid())
+  userId          String   // liga ao utilizador autenticado
+  rendimentoMensal Float
+  poupancaMensal   Float
+  objetivoPoupanca String
+  valorObjetivo Float   @default(0)
+  maioresGastos     String   // armazenamos como JSON string
+  categoriasReduzir String
+  nivelRisco       String
+  createdAt        DateTime @default(now())
+
+  User User @relation(fields: [userId], references: [id])
 }

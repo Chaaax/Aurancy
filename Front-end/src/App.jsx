@@ -9,6 +9,18 @@ import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute'; 
 
+
+//AurancyPremium
+import PagamentoTeste from './pages/Configuracoes/pagamento/PagamentoTeste';
+import AurancyPremium from './pages/Premium/AurancyPremium';
+import PagamentoSucesso from './pages/Premium/PagamentoSucesso/PagamentoSucesso';
+import DashboardPremium from "./pages/Premium/AurancyPremiumDash/DashboardPremium";
+
+
+
+
+
+
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
 
@@ -43,6 +55,17 @@ function App() {
           </PrivateRoute>
         }
       />
+     <Route path="/pagamentoteste" element={<PagamentoTeste />} />
+
+  
+     <Route path="/premium" element={<AurancyPremium />} />
+     <Route path="/pagamento/sucesso" element={<PagamentoSucesso />} />
+
+       
+     <Route path="/premium/dashboard" element={<DashboardPremium />} />
+  
+
+
 
       <Route path="agenda" element={<SubmenuAgenda />} />
 

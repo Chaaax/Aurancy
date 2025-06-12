@@ -1,0 +1,99 @@
+/* AurancyPremium.css - atualizado com estilo visual igual ao dos gráficos */
+
+.premium-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0e0e11;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.premium-card {
+  background: #16151c;
+  border: 2px solid #8b5cf6;
+  border-radius: 20px;
+  padding: 50px 60px;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.6);
+  max-width: 650px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.premium-title {
+  font-size: 2.7rem;
+  font-weight: bold;
+  margin-bottom: 14px;
+  color: #d946ef;
+  text-shadow: 0 0 10px #a855f7, 0 0 20px #9333ea;
+}
+
+.premium-subtitle {
+  font-size: 1.1rem;
+  color: #c4b5fd;
+  margin-bottom: 35px;
+}
+
+.premium-benefits {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 35px;
+  text-align: left;
+  line-height: 1.8;
+  color: #e0e7ff;
+  font-size: 1rem;
+}
+
+.premium-benefits li {
+  margin-left: 20px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.premium-benefits li::before {
+  content: '\2714';
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.premium-preco {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  color: #facc15;
+  text-shadow: 0 0 8px #facc15aa;
+}
+
+.premium-btn {
+  background: linear-gradient(to right, #9333ea, #a855f7);
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+.premium-btn:hover {
+  background: linear-gradient(to right, #a855f7, #9333ea);
+  transform: scale(1.03);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

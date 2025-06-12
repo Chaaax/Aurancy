@@ -14,7 +14,7 @@ export default function SubmenuDespesas() {
   return (
     <div className="submenu-container">
       <div className="submenu-column">
-        <h2 className="submenu-title">Gestão de despesas</h2>
+        <h2 className="submenu-title">Gestão de Despesas</h2>
         <ul style={{ listStyle: 'none', padding: 0 }}>
           {opcoes.map(opcao => (
             <li key={opcao.key}>

@@ -1,0 +1,21 @@
+
+/* Dashboard layout improvements */
+.dashboard-graficos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: center;
+}
+
+.grafico-item {
+  flex: 1 1 450px; /* Min 450px, grows responsively */
+  max-width: 500px;
+}
+
+/* Responsive tweaks for smaller screens */
+@media (max-width: 1024px) {
+  .grafico-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}

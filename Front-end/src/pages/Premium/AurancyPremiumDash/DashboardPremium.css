@@ -1,0 +1,354 @@
+.premium-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.premium-header h1 {
+  font-size: 2rem;
+  text-shadow: 0 0 8px #a64aff, 0 0 16px #fff;
+}
+
+.premium-header p {
+  font-size: 1.1rem;
+  color: #cccccc;
+}
+
+/* Secções de coluna */
+.premium-section {
+  background: #1B0F3B;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(166, 74, 255, 0.4);
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.premium-section:hover {
+  transform: translateY(-2px);
+}
+
+/* Título das colunas */
+.premium-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  color: #bbbbbb;
+  margin-bottom: 1.5rem;
+}
+
+/* Lista de pagamentos */
+.recurring-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Cada card de serviço com glassmorphism */
+.recurring-item {
+  position: relative;
+  background-color: #181818;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.service-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 2px #000000aa);
+}
+
+.service-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.service-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #f0f0ff;
+}
+
+.service-amount {
+  color: #39aaff;
+  font-size: 1rem;
+}
+
+.service-date {
+  color: #ccc;
+  font-size: 0.85rem;
+}
+
+/* ❌ canto superior direito */
+.delete-top-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.delete-top-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Wrapper principal */
+.dashboard-premium-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #1e1e2f, #0c0c1a);
+}
+
+/* Container do conteúdo */
+.dashboard-premium-container {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 4rem;
+  width: 100%;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Colunas */
+.premium-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+/* Partículas */
+#tsparticles {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100% !important;
+  z-index: 0 !important;
+  pointer-events: none;
+}
+
+/*icones*/
+.recurring-item {
+  background-color: #181818;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.service-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.service-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.service-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.service-amount {
+  color: #39aaff;
+  font-size: 0.95rem;
+}
+
+.service-date {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #ff4d4d;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+/*botao pagamento*/
+.pay-btn {
+  margin-top: 8px;
+  background-color: #1a8cff;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pay-btn:hover {
+  background-color: #0070cc;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 20, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-card {
+  background: #141220;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #f0f0ff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  max-width: 380px;
+  width: 90%;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #c6bfff;
+}
+
+.modal-card p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-buttons button {
+  padding: 0.7rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+.btn-cancelar {
+  background: #333;
+  color: #ddd;
+}
+
+.btn-cancelar:hover {
+  background: #555;
+  transform: scale(1.05);
+}
+
+.btn-remover {
+  background: linear-gradient(to right, #ff4d4d, #ff1a1a);
+  color: white;
+}
+
+.btn-remover:hover {
+  background: linear-gradient(to right, #ff3333, #cc0000);
+  transform: scale(1.05);
+}
+
+/* Optional smooth animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.status-pago {
+  margin-top: 8px;
+  background-color: #2a9134;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+
+/*formualrio*/
+
+.formulario-wrapper-completo {
+  position: relative;
+  background-color: #1e1e2f;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.formulario-header-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.btn-esconder-formulario {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-esconder-formulario:hover {
+  background-color: #1e40af;
+}
+
