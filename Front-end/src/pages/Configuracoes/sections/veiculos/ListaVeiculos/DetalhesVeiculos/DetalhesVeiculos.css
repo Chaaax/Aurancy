@@ -6,21 +6,22 @@ body {
 /* Painel com efeito vidro e sombra elegante */
 .painel-detalhes {
   position: relative;
-  background: rgba(30, 41, 59, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(40, 20, 80, 0.733);
+  backdrop-filter: blur(14px);
+  border: 1px solid #7e22ce;
   border-radius: 25px;
   padding: 2.5rem 2.5rem 2rem;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 24px rgba(168, 85, 247, 0.25);
   min-width: 500px;
   max-width: 600px;
   animation: fadeIn 0.4s ease-in-out;
   transition: transform 0.3s ease;
   margin-left: 3rem;
+  color: #f3f4f6;
 }
 
 .painel-detalhes:hover {
-  transform: scale(1.01);
+  transform: scale(1.015);
 }
 
 /* Animação de entrada */
@@ -35,42 +36,43 @@ body {
   }
 }
 
-/* Botão de fechar*/
+/* Botão de fechar */
 .fechar-icone {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background: rgba(255, 0, 0, 0.1);
+  background: rgba(168, 85, 247, 0.1);
   border-radius: 0.75rem;
   padding: 0.5rem;
   color: #f87171;
   font-size: 1.1rem;
   cursor: pointer;
-  border: none;
+  border: 1px solid #9333ea;
   backdrop-filter: blur(6px);
   transition: all 0.3s ease;
 }
 
 .fechar-icone:hover {
-  background: rgba(255, 0, 0, 0.3);
+  background: rgba(239, 68, 68, 0.3);
   color: #ffffff;
 }
 
 /* Título */
 .painel-detalhes h3 {
   font-size: 1.5rem;
-  color: #f3f4f6;
+  color: #e0d9ff;
   margin-bottom: 1.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
   padding-bottom: 0.5rem;
   padding-right: 2rem;
   letter-spacing: 0.5px;
+  text-shadow: 0 0 6px #a855f7;
 }
 
 /* Cada linha de detalhe */
 .painel-detalhes p {
   padding: 0.65rem 1rem;
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.03);
   border-radius: 0.6rem;
   margin-bottom: 0.75rem;
   font-size: 0.96rem;
@@ -79,17 +81,20 @@ body {
   justify-content: space-between;
   align-items: center;
   transition: background 0.2s ease;
+  border: 1px solid #4c1d95;
+  box-shadow: 0 0 4px rgba(139, 92, 246, 0.15);
 }
 
 .painel-detalhes p:hover {
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: rgba(124, 58, 237, 0.1);
 }
 
 .painel-detalhes p strong {
-  color: #cbd5e1;
+  color: #c4b5fd;
   font-weight: 600;
 }
-/*avisos*/
+
+/* Avisos */
 .aviso-vermelho {
   color: #f87171;
   font-weight: bold;
@@ -102,19 +107,20 @@ body {
   margin-left: 6px;
 }
 
-.botao-editar{
-  background: rgba(51, 8, 225, 0.382);
+/* Botão editar */
+.botao-editar {
+  background: rgba(139, 92, 246, 0.15);
   border-radius: 0.75rem;
   padding: 0.5rem;
-  color: #ffffff;
+  color: #f3f4f6;
   font-size: 1.1rem;
   cursor: pointer;
-  border: none;
+  border: 1px solid #7e22ce;
   backdrop-filter: blur(6px);
   transition: all 0.3s ease;
 }
 
 .botao-editar:hover {
-  background: rgba(9, 237, 74, 0.636);
+  background: rgba(139, 92, 246, 0.4);
   color: #ffffff;
 }

@@ -15,9 +15,12 @@
 }
 
 .menu-lateral h2 {
-  font-size: 1rem;
-  color: #aaa;
-  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-bottom: 2rem;
 }
 
 .menu-lateral ul {
@@ -27,23 +30,30 @@
 }
 
 .menu-lateral li {
-  padding: 16px 20px;
-  border-radius: 10px;
+  padding: 14px 18px;
+  border-radius: 12px;
   margin-bottom: 0.75rem;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 500;
+  color: #d1d5db;
+  transition: all 0.2s ease;
 }
 
 .menu-lateral li:hover {
-  background-color: #1f222a;
-  color: white;
+  text-shadow: 0 0 4px rgb(138, 92, 246);
+  color: #f3f4f6;
 }
 
 .menu-lateral li.ativo {
-  background-color: #2684ff;
+  background-color: rgba(138, 92, 246, 0.719);
   color: white;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.menu-lateral li.ativo:hover {
+  background-color: #a855f7; /* roxo ao hover no ativo */
 }
 
 /* Conteúdo à direita */

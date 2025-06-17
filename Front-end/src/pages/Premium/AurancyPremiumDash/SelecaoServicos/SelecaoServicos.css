@@ -2,21 +2,24 @@
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(10, 10, 25, 0.85);
   z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(6px);
 }
 
 .selecao-servicos-modal {
-  background: #1b0f3b;
+  background: linear-gradient(135deg, #1c1236, #2a1b4f);
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: 18px;
   max-width: 800px;
   width: 90%;
-  box-shadow: 0 0 25px #9333ea99;
-  color: white;
+  box-shadow: 0 0 32px rgba(168, 85, 247, 0.4);
+  color: #f3e8ff;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  animation: fadeInUp 0.3s ease;
 }
 
 .grid-servicos {
@@ -27,30 +30,57 @@
 }
 
 .servico-card {
-  background: #1e1e2f;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #231b3d, #2c204e);
+  border-radius: 14px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 0 10px #7c3aed44;
-  transition: transform 0.2s;
+  box-shadow: 0 0 14px rgba(124, 58, 237, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #e0deff;
+  cursor: pointer;
+  border: 1px solid rgba(124, 58, 237, 0.2);
 }
 
 .servico-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
 }
 
 .servico-card img {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.1));
 }
 
 .btn-fechar {
   margin-top: 2rem;
-  background: #9333ea;
+  background: linear-gradient(to right, #9333ea, #a855f7);
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  border-radius: 12px;
   color: white;
   font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
+
+.btn-fechar:hover {
+  background: linear-gradient(to right, #a855f7, #9333ea);
+  transform: translateY(-1px);
+}
+
+/* Fade In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

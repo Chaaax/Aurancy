@@ -1,25 +1,43 @@
 .premium-header {
   text-align: center;
   margin-bottom: 2.5rem;
+  margin-top: 5rem;
 }
 
 .premium-header h1 {
   font-size: 2rem;
+  color: #f0e7ff;
   text-shadow: 0 0 8px #a64aff, 0 0 16px #fff;
+  animation: glowFade 10s ease-in-out infinite;
 }
 
-.premium-header p {
-  font-size: 1.1rem;
-  color: #cccccc;
+/* Animação */
+@keyframes glowFade {
+  0% {
+    opacity: 0;
+    text-shadow: 0 0 2px #a64aff, 0 0 4px #fff;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 12px #a64aff, 0 0 24px #fff;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    text-shadow: 0 0 2px #a64aff, 0 0 4px #fff;
+    transform: translateY(-10px);
+  }
 }
 
-/* Secções de coluna */
+
+
 .premium-section {
   background: #1B0F3B;
   padding: 1.5rem 2rem;
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(166, 74, 255, 0.4);
-  height: 100%;
+  border: 1px solid #7e22ce;
   transition: transform 0.2s ease;
 }
 
@@ -27,10 +45,10 @@
   transform: translateY(-2px);
 }
 
-/* Título das colunas */
 .premium-section h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  color: #c084fc;
 }
 
 .section-subtitle {
@@ -39,7 +57,30 @@
   margin-bottom: 1.5rem;
 }
 
-/* Lista de pagamentos */
+.dashboard-premium-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #1e1e2f, #0c0c1a);
+}
+
+.dashboard-premium-container {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 4rem;
+  width: 100%;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.premium-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  min-height: 450px
+}
+
 .recurring-list {
   display: flex;
   flex-direction: column;
@@ -49,19 +90,46 @@
 /* Cada card de serviço com glassmorphism */
 .recurring-item {
   position: relative;
-  background-color: #181818;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #1B0F3B, #27134a);
+  border-radius: 14px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.15);
+  border: 10px solid rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.recurring-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(168, 85, 247, 0.4);
 }
 
 .service-info {
   display: flex;
   align-items: center;
   gap: 1.2rem;
+}
+
+.adicionar-btn {
+  background: linear-gradient(to right, #7c3aed, #a855f7);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 1rem;
+}
+
+.adicionar-btn:hover {
+  background: linear-gradient(to right, #9333ea, #7c3aed);
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.55);
 }
 
 .service-icon {
@@ -93,7 +161,6 @@
   font-size: 0.85rem;
 }
 
-/* ❌ canto superior direito */
 .delete-top-btn {
   position: absolute;
   top: 8px;
@@ -103,109 +170,12 @@
   color: #ff4d4d;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
 .delete-top-btn:hover {
   transform: scale(1.2);
 }
 
-/* Wrapper principal */
-.dashboard-premium-wrapper {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  background: radial-gradient(circle at top, #1e1e2f, #0c0c1a);
-}
-
-/* Container do conteúdo */
-.dashboard-premium-container {
-  position: relative;
-  z-index: 1;
-  padding: 2rem 4rem;
-  width: 100%;
-  color: #ffffff;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* Colunas */
-.premium-columns {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
-  align-items: start;
-}
-
-/* Partículas */
-#tsparticles {
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100vw !important;
-  height: 100% !important;
-  z-index: 0 !important;
-  pointer-events: none;
-}
-
-/*icones*/
-.recurring-item {
-  background-color: #181818;
-  border-radius: 10px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-}
-
-.service-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.service-icon {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-.service-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.service-name {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.service-amount {
-  color: #39aaff;
-  font-size: 0.95rem;
-}
-
-.service-date {
-  font-size: 0.85rem;
-  color: #ccc;
-}
-
-.delete-btn {
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  cursor: pointer;
-  color: #ff4d4d;
-  transition: transform 0.2s ease;
-}
-
-.delete-btn:hover {
-  transform: scale(1.2);
-}
-
-/*botao pagamento*/
 .pay-btn {
   margin-top: 8px;
   background-color: #1a8cff;
@@ -215,13 +185,24 @@
   border-radius: 8px;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 .pay-btn:hover {
   background-color: #0070cc;
 }
 
+.status-pago {
+  margin-top: 8px;
+  background-color: #2a9134;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -236,7 +217,7 @@
 }
 
 .modal-card {
-  background: #141220;
+  background: #b6b3c4;
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
@@ -245,18 +226,6 @@
   max-width: 380px;
   width: 90%;
   animation: fadeIn 0.3s ease-in-out;
-}
-
-.modal-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  color: #c6bfff;
-}
-
-.modal-card p {
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  color: #aaa;
 }
 
 .modal-buttons {
@@ -273,8 +242,6 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
 }
 
 .btn-cancelar {
@@ -297,34 +264,8 @@
   transform: scale(1.05);
 }
 
-/* Optional smooth animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-.status-pago {
-  margin-top: 8px;
-  background-color: #2a9134;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 0.85rem;
-  display: inline-block;
-}
-
-/*formualrio*/
-
+/* Formulário */
 .formulario-wrapper-completo {
-  position: relative;
   background-color: #1e1e2f;
   padding: 16px;
   border-radius: 12px;
@@ -345,10 +286,101 @@
   padding: 8px 14px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .btn-esconder-formulario:hover {
   background-color: #1e40af;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* RESPONSIVIDADE GERAL */
+@media (max-width: 1024px) {
+  .premium-columns {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dashboard-premium-container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .premium-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-section {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .premium-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .premium-btn {
+    width: 100%;
+  }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .formulario-wrapper-completo {
+    padding: 12px;
+  }
+
+  .btn-esconder-formulario,
+  .btn-mostrar-formulario {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-premium-container {
+    padding: 1rem;
+  }
+
+  .premium-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .premium-preco {
+    font-size: 1.2rem;
+  }
+
+  .premium-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .service-name {
+    font-size: 1rem;
+  }
+
+  .pay-btn {
+    width: 100%;
+  }
+
+  .modal-card {
+    padding: 1.2rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .modal-buttons button {
+    width: 100%;
+  }
+}

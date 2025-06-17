@@ -7,11 +7,13 @@ import Configuracoes from './pages/Configuracoes/Configuracoes';
 import SubmenuAgenda from './pages/Configuracoes/sections/Agenda/SubmenuAgenda/SubmenuAgenda'
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
-import PrivateRoute from './components/PrivateRoute'; 
+import PrivateRoute from './components/PrivateRoute';
+import PremiumRoute from './components/PremiumRoute';
+import FormEventoFinanceiro from './pages/Configuracoes/sections/Agenda/SubmenuAgenda/FormregistarAgenda/FormEventoFinanceiro';
 
 
 //AurancyPremium
-import PagamentoTeste from './pages/Configuracoes/pagamento/PagamentoTeste';
+import PagamentoAurancyPremium from './pages/Configuracoes/pagamento/PagamentoAurancyPremium';
 import AurancyPremium from './pages/Premium/AurancyPremium';
 import PagamentoSucesso from './pages/Premium/PagamentoSucesso/PagamentoSucesso';
 import DashboardPremium from "./pages/Premium/AurancyPremiumDash/DashboardPremium";
@@ -55,16 +57,25 @@ function App() {
           </PrivateRoute>
         }
       />
-     <Route path="/pagamentoteste" element={<PagamentoTeste />} />
+
+      
+     <Route path="/PagamentoAurancyPremium" element={<PagamentoAurancyPremium />} />
 
   
      <Route path="/premium" element={<AurancyPremium />} />
      <Route path="/pagamento/sucesso" element={<PagamentoSucesso />} />
 
        
-     <Route path="/premium/dashboard" element={<DashboardPremium />} />
+     <Route
+        path="/premium/dashboard"
+        element={
+          <PremiumRoute>
+            <DashboardPremium />
+          </PremiumRoute>
+        }
+      />
   
-
+    <Route path="/configuracoes/FormEventoFinanceiro" element={<FormEventoFinanceiro />} />
 
 
       <Route path="agenda" element={<SubmenuAgenda />} />

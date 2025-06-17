@@ -13,10 +13,14 @@ router.post('/login', authController.login);
 router.get('/me', authenticateToken, authController.getMe);
 
 // POST /api/auth/upload-profile-picture
-router.post('/upload-profile-picture', authenticateToken, authController.uploadProfilePicture);
+router.put('/update-profile', authenticateToken, authController.updateProfile);
+
+//Update-perfil
+router.put('/update-profile', authenticateToken, authController.updateProfile);
 
 // POST /api/auth/ativar-premium
 router.post('/ativar-premium', authenticateToken, authController.ativarPremium);
+
 
 
 module.exports = router;

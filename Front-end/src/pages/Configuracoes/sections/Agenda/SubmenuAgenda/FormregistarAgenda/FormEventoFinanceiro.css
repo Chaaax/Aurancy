@@ -2,23 +2,27 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1.5rem;
-  background-color: #1f2937;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(40, 20, 80, 0.85), rgba(20, 10, 50, 0.92));
   border-radius: 25px;
   width: 440px;
   max-width: 600px;
   color: #e5e7eb;
   margin-top: 3rem;
   margin-left: 2rem;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+  backdrop-filter: blur(6px);
+  border: 1px solid #9333ea;
 }
 
 .form-evento h3 {
-  color: #ffffff;
-  font-size: 1.25rem;
+  color: #e0d9ff;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-shadow: 0 0 6px #a855f7;
 }
 
 .form-linha {
@@ -29,47 +33,64 @@
 .form-linha label {
   margin-bottom: 0.25rem;
   font-weight: 500;
+  color: #d1d5db;
 }
 
 .form-linha input,
-.form-linha textarea {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #374151;
+.form-linha textarea,
+.form-linha select {
+  padding: 0.65rem 0.95rem;
+  border-radius: 10px;
+  border: 1px solid #4c1d95;
   background-color: #111827;
   color: #f9fafb;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  box-shadow: 0 0 4px rgba(168, 85, 247, 0.15);
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-linha input:focus,
+.form-linha textarea:focus,
+.form-linha select:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
+  outline: none;
 }
 
 .form-linha textarea {
   resize: vertical;
-  min-height: 60px;
+  min-height: 70px;
 }
 
 button[type='submit'] {
   margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #3b82f6;
+  padding: 0.75rem 1.2rem;
+  background-color: #7c3aed;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   color: white;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+  border: 1px solid #9333ea;
 }
 
 button[type='submit']:hover {
-  background-color: #2563eb;
+  background-color: #9333ea;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
 }
 
 button[type='submit']:disabled {
   background-color: #6b7280;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .erro {
   color: #f87171;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   margin-top: 0.25rem;
 }
 
@@ -79,3 +100,13 @@ button[type='submit']:disabled {
   margin-top: 0.5rem;
 }
 
+.input-data {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #111827;
+  color: #f3f4f6;
+  border: 1px solid #4c1d95;
+  font-size: 1rem;
+  box-shadow: 0 0 5px rgba(168, 85, 247, 0.2);
+}

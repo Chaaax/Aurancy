@@ -3,16 +3,23 @@ import { useForm } from 'react-hook-form'
 import CategoriaDropdown from '../../../Despesas/SubmenuDespesas/FormDespesas/CategoriaDropdown/CategoriaDropdown'
 import './FormEventoFinanceiro.css'
 
+import DatePicker, { registerLocale } from 'react-datepicker'
+import pt from 'date-fns/locale/pt'
+import 'react-datepicker/dist/react-datepicker.css'
+
+registerLocale('pt', pt)
+
 export default function FormEventoFinanceiro() {
   const { register, handleSubmit, reset } = useForm()
   const [categoriaSelecionada, setCategoriaSelecionada] = useState('')
+  const [dataSelecionada, setDataSelecionada] = useState(null)
 
   const onSubmit = async (data) => {
     const payload = {
       ...data,
       categoria: categoriaSelecionada,
-      valor: parseFloat(data.valor),
-      data: new Date(data.data)
+      valor: parseFloat(data.valor || 0),
+      data: dataSelecionada?.toISOString()
     }
 
     try {
@@ -30,6 +37,7 @@ export default function FormEventoFinanceiro() {
         alert('Evento registado com sucesso!')
         reset()
         setCategoriaSelecionada('')
+        setDataSelecionada(null)
       } else {
         alert('Erro ao registar evento.')
       }
@@ -37,6 +45,38 @@ export default function FormEventoFinanceiro() {
       console.error(error)
       alert('Erro de rede.')
     }
+  }
+
+  const renderCustomHeader = ({ date, changeYear, changeMonth }) => {
+    const meses = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ]
+    return (
+      <>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.3rem' }}>
+          <select
+            value={date.getFullYear()}
+            onChange={({ target: { value } }) => changeYear(+value)}
+          >
+            {Array.from({ length: 100 }, (_, i) => new Date().getFullYear() + i).map(year => (
+              <option key={year} value={year}>{year}</option>
+            ))}
+          </select>
+          <select
+            value={date.getMonth()}
+            onChange={({ target: { value } }) => changeMonth(+value)}
+          >
+            {meses.map((month, index) => (
+              <option key={month} value={index}>{month}</option>
+            ))}
+          </select>
+        </div>
+        <div style={{ textAlign: 'center', fontSize: '1rem', fontWeight: '600', color: '#e5e7eb' }}>
+          {meses[date.getMonth()]} {date.getFullYear()}
+        </div>
+      </>
+    )
   }
 
   return (
@@ -50,7 +90,17 @@ export default function FormEventoFinanceiro() {
 
       <div className="form-linha">
         <label>Data</label>
-        <input type="date" {...register('data')} required />
+        <DatePicker
+          selected={dataSelecionada}
+          onChange={(date) => setDataSelecionada(date)}
+          dateFormat="dd/MM/yyyy"
+          placeholderText="Selecionar data"
+          locale="pt"
+          showPopperArrow={false}
+          className="input-data"
+          maxDate={new Date('2099-12-31')}
+          renderCustomHeader={renderCustomHeader}
+        />
       </div>
 
       <div className="form-linha">

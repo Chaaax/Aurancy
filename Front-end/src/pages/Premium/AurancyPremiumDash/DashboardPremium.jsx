@@ -6,6 +6,8 @@ import "./DashboardPremium.css";
 import FormularioSaving from "./SmartSaving/FormularioSaving";
 import GraficoLinhasPremium from "./SmartSaving/GraficoLinhasPremium/GraficoLinhasPremium";
 import AnalisesAvancadas from "./SmartSaving/AnalisesAvancadas/AnalisesAvancadas";
+import Topbar from "../../../components/Topbar/Topbar";
+import Sidebar from "../../../components/Sidebar/Sidebar";
 
 /* ícones */
 import amazon from "../../../assets/Servicos/amazonprime.svg";
@@ -37,11 +39,11 @@ export default function DashboardPremium() {
   const [pagamentos, setPagamentos] = useState([]);
   const [subToRemover, setSubToRemover] = useState(null);
   const [erroDuplicado, setErroDuplicado] = useState(null);
-  const [formEnviado, setFormEnviado] = useState(false);
   const { user } = useContext(AuthContext);
-  /*formulario*/
-  const [formularioPreenchido, setFormularioPreenchido] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [mostrarFormularioSaving, setMostrarFormularioSaving] = useState(false);
+  const toggleSidebar = () => setSidebarOpen(prev => !prev);
+
 
   const [analisesAtivas, setAnalisesAtivas] = useState([]);
 
@@ -156,10 +158,14 @@ export default function DashboardPremium() {
   return (
     <div className="dashboard-premium-wrapper">
       <ParticlesBackground />
+      <Topbar toggleSidebar={toggleSidebar} />
+      <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
+      {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>}
+
       <div className="dashboard-premium-container">
         <div className="premium-header">
           <h1>Bem-vindo ao Aurancy Premium ✨</h1>
-          <p>Gestão avançada da tua vida financeira com tecnologia inteligente.</p>
+          
         </div>
 
         <div className="premium-columns">

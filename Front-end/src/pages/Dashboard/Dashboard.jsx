@@ -38,25 +38,22 @@ function Dashboard() {
         <h2 className="dashboard-title">Resumo das Despesas</h2>
 
         {/* WRAPPER FLEX */}
-        <div className="dashboard-graficos">
-          <div className="grafico-item">
-            <DespesasMensaisChart />
-          </div>
-          <div className="grafico-item ">
-            <EvolucaoMensalChart />
-          </div>
-          <div className="grafico-item">
-            <AnaliseInteligente/>
+      <div className="dashboard-graficos">
+        <div className="grafico-item"><DespesasMensaisChart /></div>
+        <div className="grafico-item"><EvolucaoMensalChart /></div>
+        <div className="grafico-item"><AnaliseInteligente /></div>
+      </div>
+
+      <div className="dashboard-alertas-calendario-wrapper">
+        <div className="dashboard-analise-alertas">
+          <AlertasRecorrentes />
+        </div>
+        <div className="dashboard-calendario-section">
+          <div className="calendario-wrapper">
+            <CalendarioFinanceiro />
           </div>
         </div>
-      <div className="dashboard-bottom-section">
-            <div className="calendario-wrapper">
-              <CalendarioFinanceiro />
-            </div>
-            <div className="alertas-wrapper">
-              <AlertasRecorrentes />
-            </div>
-          </div>
+      </div>
       </main>
     </div>
       

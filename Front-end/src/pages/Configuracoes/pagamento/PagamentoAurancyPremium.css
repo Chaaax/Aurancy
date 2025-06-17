@@ -1,19 +1,27 @@
-/* Fundo geral */
-.premium-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #0e0e11;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
+.pagamento-premium-wrapper {
   position: relative;
+  min-height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: radial-gradient(circle at top, #1e1e2f, #0c0c1a);
+  animation: fundoRoxo 15s ease-in-out infinite;
 }
 
-/* Partículas (se usares tsparticles) */
+@keyframes fundoRoxo {
+  0% {
+    background: radial-gradient(circle at top, #1e1e2f, #0c0c1a);
+  }
+  50% {
+    background: radial-gradient(circle at top, #2a1655, #120c25);
+  }
+  100% {
+    background: radial-gradient(circle at top, #1e1e2f, #0c0c1a);
+  }
+}
+
 #tsparticles {
   position: absolute !important;
   top: 0;
@@ -24,63 +32,58 @@
   pointer-events: none;
 }
 
-/* Card premium */
+/* Card central */
 .premium-card {
-  background: #16151c;
+  background: #3e26c5;
   border: 2px solid #8b5cf6;
   border-radius: 20px;
   padding: 50px 60px;
-  box-shadow: 0 0 25px rgba(139, 92, 246, 0.6);
   max-width: 650px;
   width: 100%;
   text-align: center;
-  animation: fadeIn 0.8s ease-in-out;
+  color: white;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.6);
   z-index: 1;
   position: relative;
+  animation: fadeIn 1s ease;
 }
 
-/* Título */
 .premium-title {
-  font-size: 2.7rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 14px;
   color: #d946ef;
   text-shadow: 0 0 10px #a855f7, 0 0 20px #9333ea;
+  margin-bottom: 1rem;
 }
 
-/* Subtítulo */
 .premium-subtitle {
-  font-size: 1.1rem;
   color: #c4b5fd;
-  margin-bottom: 35px;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
 }
 
-/* Lista de benefícios */
 .premium-benefits {
   list-style: none;
   padding: 0;
-  margin-bottom: 35px;
   text-align: left;
+  margin-bottom: 2rem;
   line-height: 1.8;
   color: #e0e7ff;
-  font-size: 1rem;
 }
 
 .premium-benefits li {
-  margin-left: 20px;
+  margin-left: 1rem;
   position: relative;
   padding-left: 20px;
 }
 
 .premium-benefits li::before {
-  content: '✔';
+  content: "✔";
   position: absolute;
   left: 0;
   color: #10b981;
-  font-weight: bold;
 }
 
-/* Preço */
 .premium-preco {
   font-size: 1.4rem;
   margin-bottom: 25px;
@@ -88,18 +91,17 @@
   text-shadow: 0 0 8px #facc15aa;
 }
 
-/* Botão */
 .premium-btn {
   background: linear-gradient(to right, #9333ea, #a855f7);
   color: white;
-  border: none;
   padding: 15px 35px;
   font-size: 1rem;
+  border: none;
   border-radius: 12px;
-  cursor: pointer;
   font-weight: 600;
-  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
   box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .premium-btn:hover {
@@ -107,32 +109,13 @@
   transform: scale(1.03);
 }
 
-/* Animação */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}
-.voltar-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: transparent;
-  border: none;
-  color: #a855f7;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.2s ease;
-  z-index: 2;
-}
-
-.voltar-btn:hover {
-  color: #d946ef;
-  text-decoration: underline;
 }

@@ -1,87 +1,117 @@
-
 .calendario-container {
-  padding: 1rem;
-  background-color: #111827;
-  border-radius: 20px;
-  max-width: 850px;
-  margin: 0 auto;
-  color: #f9fafb;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem;
+  border-radius: 25px;
+  /* margin: 0 auto; --> REMOVE esta linha */
+  color: #f9f9ff;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  backdrop-filter: blur(1px);
+  background-color: rgba(60, 49, 83, 0.027);
+  position: relative;
+  z-index: 10;
+  border: 1px solid #7e22ce;
+  width: 100%; 
 }
 
+/* FullCalendar */
 .fc {
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
-  background-color: #111827;
-  color: #f9fafb;
-  border-radius: 10px;
+  background-color: transparent; /* fundo transparente */
+  color: #e2e2ff;
+  border-radius: 12px;
+  width: 100% !important;
 }
 
+/* Título do calendário */
 .fc-toolbar-title {
-  font-size: 1.5rem;
-  color: #ffffff;
-  font-weight: 700;
+  font-size: 1.4rem;
+  color: #d9b8ff;
+  font-weight: 600;
   padding: 0.5rem 0;
+  text-shadow: 0 0 4px #a855f7;
 }
 
+/* Botões topo */
 .fc-button {
-  background-color: #2563eb;
+  background-color: #7c3aed;
   border: none;
   color: white;
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
   font-size: 0.8rem;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .fc-button:hover {
-  background-color: #1d4ed8;
+  background-color: #9333ea;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
 }
 
+/* Dias */
 .fc-daygrid-day-number {
-  color: #c7d2fe;
-  font-weight: 600;
+  color: #c7baff;
+  font-weight: 500;
   font-size: 0.85rem;
 }
 
+/* Hoje */
 .fc-day-today {
-  background-color: rgba(59, 130, 246, 0.3) !important;
-  border: 1px solid #3b82f6;
+  background-color: rgba(168, 85, 247, 0.15) !important;
+  border: 1px solid #a855f7;
 }
 
+/* Eventos no calendário */
 .fc-event {
-  background-color: #3b82f6 !important;
+  background-color: #a855f7 !important;
   border: none;
-  border-radius: 4px;
-  padding: 2px 4px;
+  border-radius: 6px;
+  padding: 2px 6px;
   font-size: 0.75rem;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: white;
+  cursor: pointer !important;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
 }
 
+/* Título do evento */
 .fc-event-title {
   color: white;
 }
 
+/* Card do Evento (popup) */
 .card-evento {
   position: absolute;
-  background-color: #1f2937;
-  color: #f9fafb;
+  background-color: #1f1d38;
+  color: #f9f9ff;
   padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
   z-index: 9999;
-  width: 240px;
+  width: 260px;
   transform: translateY(10px);
   animation: fadeIn 0.2s ease-in-out;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+/* Animação para fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(10px);
+  }
 }
 
 .card-evento h3 {
   margin: 0 0 0.5rem;
   font-size: 1rem;
-  color: #fbbf24;
+  color: #facc15;
 }
 
 .card-evento p {
@@ -100,27 +130,11 @@
   cursor: pointer;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(10px);
-  }
-}
-
-/*cursor*/
-.fc-event {
-  cursor: pointer !important;
-}
-
-/*Marcar evento*/
+/* Botão de marcar novo evento */
 .btn-marcar-wrapper {
   display: flex;
   justify-content: flex-end;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .btn-marcar-evento {
@@ -132,9 +146,10 @@
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .btn-marcar-evento:hover {
   background-color: #059669;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
 }

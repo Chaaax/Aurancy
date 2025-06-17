@@ -1,38 +1,54 @@
 .agenda-financeira {
-  padding: 1rem;
-  background-color: #1f2937;
-  border-radius: 20px;
-  color: #f9fafb;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  padding: 1.8rem;
+  background: linear-gradient(145deg, rgba(40, 20, 80, 0.88), rgba(24, 14, 56, 0.94));
+  border-radius: 25px;
+  color: #f3f4f6;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
   margin-top: 2rem;
   margin-left: 2rem;
-  max-width: 650px;
+  max-width: 700px;
+  border: 1px solid #9333ea;
+  backdrop-filter: blur(2px);
 }
 
 .selecao-tempo {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.8rem;
 }
 
 .selecao-tempo select {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #374151;
-  background-color: #111827;
+  padding: 0.65rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #7c3aed;
+  background-color: #0f0f1a;
   color: #f9fafb;
+  font-size: 0.95rem;
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.2);
+  transition: all 0.3s ease;
+}
+
+.selecao-tempo select:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
 
 .lista-eventos {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .dia-evento h4 {
-  margin-bottom: 0.5rem;
-  color: #eab308;
+  margin-bottom: 0.6rem;
+  color: #c084fc;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-left: 4px solid #9333ea;
+  padding-left: 0.6rem;
+  text-shadow: 0 0 4px rgba(168, 85, 247, 0.5);
 }
 
 .dia-evento ul {
@@ -41,8 +57,19 @@
 }
 
 .dia-evento li {
-  margin-bottom: 0.5rem;
-  background-color: #111827;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
+  background-color: #0e0e1c;
+  padding: 0.9rem 1.3rem;
+  border-radius: 12px;
+  border: 1px solid #6d28d9;
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.1);
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
 }
+
+.dia-evento li:hover {
+  transform: translateX(6px);
+  background-color: #1b1037;
+  border-color: #a855f7;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.25);
+}
+

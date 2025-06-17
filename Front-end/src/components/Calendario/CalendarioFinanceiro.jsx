@@ -5,6 +5,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import './CalendarioFinanceiro.css'
+import FormEventoFinanceiro from '../../pages/Configuracoes/sections/Agenda/SubmenuAgenda/FormregistarAgenda/FormEventoFinanceiro'
 
 export default function CalendarioFinanceiro() {
   const [eventos, setEventos] = useState([])
@@ -86,9 +87,13 @@ export default function CalendarioFinanceiro() {
 
   return (
     <div className="calendario-container">
-        <button className="btn-marcar-evento" onClick={() => navigate('/configuracoes?secao=agendar')}>
-        ➕ Marcar Evento
-      </button>
+      <button
+      className="btn-marcar-evento"
+      onClick={() => navigate('/configuracoes?secao=agenda&subsecao=agendar')}
+    >
+      Marcar Evento
+    </button>
+
 
       <FullCalendar
         height="auto"

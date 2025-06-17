@@ -63,3 +63,9 @@
     height: 100%;
   }
 }
+
+.titulo-glow {
+  color: #e879f9;
+  font-weight: bold;
+  text-shadow: 0 0 6px #e879f9, 0 0 12px #c084fc;
+}

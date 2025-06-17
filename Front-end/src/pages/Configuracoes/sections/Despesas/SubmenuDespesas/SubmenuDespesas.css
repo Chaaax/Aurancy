@@ -21,7 +21,7 @@
   width: 100%;
   padding: 0.8rem 1.5rem;
   margin-bottom: 0.75rem;
-  background-color: #1e293b;
+  background-color: rgba(138, 92, 246, 0.719);
   color: #e2e8f0;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -33,15 +33,15 @@
 }
 
 .submenu-button:hover {
-  background-color: #334155;
+  background-color: rgba(138, 92, 246, 0.719);
   transform: translateX(2px);
 }
 
 .submenu-button.active {
-  background-color: #2563eb;
-  color: white;
+  background-color: #6b44c6;
+  color: #fff;
   font-weight: 600;
-  border: 1px solid #3b82f6;
+  box-shadow: 0 0 16px rgba(107, 68, 198, 0.5);
 }
 
 .submenu-content {

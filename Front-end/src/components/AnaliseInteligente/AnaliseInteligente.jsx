@@ -162,7 +162,6 @@ export default function AnaliseInteligente() {
   return (
     <div className="analise-container">
       <h3 className="grafico-titulo">Análise Inteligente</h3>
-
       <div className="selecao-meses">
         <label>
           Tipo de Análise:
@@ -199,8 +198,7 @@ export default function AnaliseInteligente() {
         )}
 
         {modo === 'periodoUnico' && (
-          <fieldset>
-            <legend>Selecionar Período:</legend>
+          <>
             <label>Mês Início:
               <select value={periodoUnico.mesInicio} onChange={e => setPeriodoUnico(p => ({ ...p, mesInicio: Number(e.target.value) }))}>
                 {nomesMeses.map((nome, i) => <option key={i} value={i + 1}>{nome}</option>)}
@@ -216,7 +214,7 @@ export default function AnaliseInteligente() {
                 {anosDisponiveis.map(a => <option key={a} value={a}>{a}</option>)}
               </select>
             </label>
-          </fieldset>
+          </>
         )}
       </div>
 

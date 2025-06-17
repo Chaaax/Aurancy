@@ -1,33 +1,34 @@
-/* Perfil.css */
 .perfil-wrapper {
   display: flex;
   min-height: 100vh;
-  background-color: #0f1115;
-  color: #fff;
-  padding: 40px 20px;
+  background: radial-gradient(circle at top, #16171d 0%, #0f1115 100%);
+  color: #f3f4f6;
+  padding: 3rem 2rem;
   box-sizing: border-box;
-    background: radial-gradient(circle at top, #16171d 0%, #0f1115 100%);
+  
 }
 
 .perfil-card {
-  margin-left: 4rem;
-  margin-top: 5.5rem;
-  background-color: #1e1e1e;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 0 35px rgba(168, 85, 247, 0.4);
-  max-width: 600px;
+  margin-left: 2rem;
+  margin-top: 4rem;
+  background: rgba(40, 20, 80, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 0 35px rgba(168, 85, 247, 0.3);
+  max-width: 650px;
   width: 100%;
   transition: all 0.3s ease;
+  border: 1px solid #7e22ce;
 }
 
 .perfil-header {
   display: flex;
   align-items: center;
-  gap: 30px;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #333;
-  padding-bottom: 20px;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.5rem;
 }
 
 .perfil-foto-wrapper {
@@ -42,24 +43,30 @@
   border-radius: 50%;
   border: 3px solid #4caf50;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.perfil-foto:hover {
+  transform: scale(1.05);
 }
 
 .perfil-upload-overlay {
   position: absolute;
-  bottom: -27px;
+  bottom: -40px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(139, 137, 137, 0.1);
-  color: #fff;
-  font-size: 0.9rem;
-  padding: 3px 15px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #ddd;
+  font-size: 0.8rem;
+  padding: 4px 14px;
   border-radius: 20px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .perfil-upload-overlay:hover {
-  background-color: rgba(40, 242, 5, 0.8);
+  background: rgba(168, 85, 247, 0.8);
+  color: white;
 }
 
 .perfil-info-main {
@@ -67,34 +74,49 @@
 }
 
 .perfil-nome {
-  font-size: 1.8rem;
-  margin-bottom: 4px;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #f3f4f6;
+  text-shadow: 0 0 6px #c084fc;
+  margin-bottom: 0.25rem;
 }
 
 .perfil-email {
-  font-size: 0.95rem;
-  color: #aaa;
-  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  margin-bottom: 0.75rem;
+}
+
+.badge-premium {
+  background: linear-gradient(to right, #a855f7, #8b5cf6);
+  color: white;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  width: fit-content;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
 }
 
 .perfil-edit-btn {
-  background-color: #4caf50;
+  background: #4caf50;
   border: none;
   padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 8px;
   color: white;
   cursor: pointer;
   font-weight: 500;
   font-size: 0.9rem;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s;
 }
 
 .perfil-edit-btn:hover {
-  background-color: #45a049;
+  background: #43a047;
+  transform: scale(1.03);
 }
 
 .perfil-info {
-  margin-top: 20px;
+  margin-top: 1rem;
 }
 
 .perfil-info-line {
@@ -102,6 +124,8 @@
   justify-content: space-between;
   margin: 12px 0;
   font-size: 1.05rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 6px;
 }
 
 .perfil-label {
@@ -131,9 +155,32 @@
     align-items: flex-start;
   }
 
- 
-
   .perfil-label {
     min-width: unset;
   }
+
+  .perfil-card {
+    margin-left: 0;
+    margin-top: 2rem;
+    padding: 2rem;
+  }
+}
+
+/*editarperfil*/
+.perfil-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #111827;
+  color: #f9fafb;
+  border: 1px solid #374151;
+  transition: 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.perfil-input:focus {
+  border-color: #a855f7;
+  outline: none;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
 }

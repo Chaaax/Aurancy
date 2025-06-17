@@ -33,8 +33,6 @@ const categorias = [
       { id: "variacaoMensal", label: "Variação mensal de gastos por categoria" },
       { id: "percentagemPoupada", label: "Percentagem poupada vs rendimento" },
       { id: "progressoMes", label: "Progresso da poupança este mês" },
-      { id: "comparacaoMeses", label: "Comparação entre meses anteriores" },
-      { id: "evolucao", label: "Evolução das despesas acumuladas" },
       { id: "categoriaRisco", label: "Risco de desequilíbrio por categoria" },
     ],
   },
@@ -50,7 +48,14 @@ const categorias = [
 ];
 
 export default function AnalisesMenu({ analisesAtivas, setAnalisesAtivas }) {
-  const [estadoSecoes, setEstadoSecoes] = useState({});
+  const [estadoSecoes, setEstadoSecoes] = useState(() =>
+    categorias.reduce((acc, cat) => {
+      acc[cat.id] = false;
+      return acc;
+    }, {})
+  );
+
+  const [mostrarMenu, setMostrarMenu] = useState(false);
 
   const toggleAnalise = (id) => {
     setAnalisesAtivas((prev) =>
@@ -62,34 +67,54 @@ export default function AnalisesMenu({ analisesAtivas, setAnalisesAtivas }) {
     setEstadoSecoes((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const handleToggleMenu = () => {
+    const proximoMostrarMenu = !mostrarMenu;
+
+    // Todas as secções devem começar fechadas ao abrir
+    const novoEstado = categorias.reduce((acc, cat) => {
+      acc[cat.id] = false;
+      return acc;
+    }, {});
+
+    setEstadoSecoes(novoEstado);
+    setMostrarMenu(proximoMostrarMenu);
+  };
+
+
   return (
     <div className="menu-analises-container">
       <div className="menu-toggle-bar">
         <h3>📌 Seleciona as análises</h3>
+        <button className="btn-toggle" onClick={handleToggleMenu}>
+          {mostrarMenu ? "🔽 Esconder Menu" : "🔍 Ver Menu"}
+        </button>
       </div>
 
-      {categorias.map((secao) => (
-        <div key={secao.id} className="secao-analises">
-          <h4 onClick={() => toggleSecao(secao.id)} className="secao-titulo">
-            {secao.titulo} <span>{estadoSecoes[secao.id] ? "▼" : "▲"}</span>
-          </h4>
-
-          {estadoSecoes[secao.id] && (
-            <div className="menu-analises-box">
-              {secao.opcoes.map((analise) => (
-                <label key={analise.id} className="analise-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={analisesAtivas.includes(analise.id)}
-                    onChange={() => toggleAnalise(analise.id)}
-                  />
-                  <span className="checkbox-label">{analise.label}</span>
-                </label>
-              ))}
+      {mostrarMenu &&
+        categorias.map((secao) => (
+          <div key={secao.id} className="secao-analises">
+            <div className="accordion-header" onClick={() => toggleSecao(secao.id)}>
+              <h4 className="secao-titulo">{secao.titulo}</h4>
+              <span className="seta">{estadoSecoes[secao.id] ? "▼" : "▲"}</span>
             </div>
-          )}
-        </div>
-      ))}
+
+            {estadoSecoes[secao.id] && (
+              <div className="menu-analises-box">
+                {secao.opcoes.map((analise) => (
+                  <label key={analise.id} className="analise-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={analisesAtivas.includes(analise.id)}
+                      onChange={() => toggleAnalise(analise.id)}
+                    />
+                    <span className="checkbox-label">{analise.label}</span>
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
     </div>
   );
 }
+

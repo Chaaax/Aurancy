@@ -6,9 +6,18 @@
 }
 
 .analise-item {
-  background: #25253a;
-  color: white;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, #1f1b38, #2a1848);
+  color: #f3f4f6;
+  padding: 1.1rem 1.3rem;
+  border-radius: 14px;
+  border: 1px solid #7e22ce;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+  font-size: 0.96rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.analise-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.4);
+}
+

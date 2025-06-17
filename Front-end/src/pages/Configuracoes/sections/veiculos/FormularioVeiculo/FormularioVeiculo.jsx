@@ -2,6 +2,11 @@ import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import './FormularioVeiculo.css';
 import CreatableSelect from 'react-select/creatable';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import pt from 'date-fns/locale/pt';
+import 'react-datepicker/dist/react-datepicker.css';
+
+registerLocale('pt', pt);
 
 export default function FormularioVeiculo({ onSuccess }) {
   const {
@@ -14,6 +19,8 @@ export default function FormularioVeiculo({ onSuccess }) {
 
   const [marcas, setMarcas] = useState([]);
   const [marcaSelecionada, setMarcaSelecionada] = useState('');
+  const [ultimaInspecao, setUltimaInspecao] = useState(null);
+  const [seguroAte, setSeguroAte] = useState(null);
 
   const API_KEY = '7bea7ecee4mshaa3cb1053f2b9e5p15b0cfjsn6ef90dffb9ad';
   const API_HOST = 'car-api2.p.rapidapi.com';
@@ -47,49 +54,48 @@ export default function FormularioVeiculo({ onSuccess }) {
       .catch(err => console.error('Erro ao buscar marcas:', err));
   }, []);
 
-const onSubmit = async (data) => {
-  try {
-    const token = localStorage.getItem('token');
+  const onSubmit = async (data) => {
+    try {
+      const token = localStorage.getItem('token');
 
-    const payload = {
-      ...data,
-      combustivel: data.combustivel || null,
-      ultimaInspecao: data.ultimaInspecao || null,
-      seguroAte: data.seguroAte || null
-    };
+      const payload = {
+        ...data,
+        combustivel: data.combustivel || null,
+        ultimaInspecao: ultimaInspecao ? ultimaInspecao.toISOString() : null,
+        seguroAte: seguroAte ? seguroAte.toISOString() : null
+      };
 
-    console.log("Payload enviado:", payload);
+      console.log("Payload enviado:", payload);
 
-    const response = await fetch('/api/veiculos', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify(payload)
-    });
+      const response = await fetch('/api/veiculos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+      });
 
-    if (response.ok) {
-      alert('🚗 Veículo adicionado com sucesso!');
-      reset();
-      onSuccess?.();
-    } else {
-      const errData = await response.json();
-      alert('❌ Erro ao adicionar veículo: ' + (errData.error || 'Erro desconhecido'));
+      if (response.ok) {
+        alert('🚗 Veículo adicionado com sucesso!');
+        reset();
+        onSuccess?.();
+      } else {
+        const errData = await response.json();
+        alert('❌ Erro ao adicionar veículo: ' + (errData.error || 'Erro desconhecido'));
+      }
+    } catch (err) {
+      console.error('Erro no onSubmit:', err);
+      alert('Erro de rede ou servidor.');
     }
-  } catch (err) {
-    console.error('Erro no onSubmit:', err);
-    alert('Erro de rede ou servidor.');
-  }
-};
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form-veiculo">
       <div className="form-grid">
-        {/* Marca */}
         <div className="form-group">
           <label>Marca</label>
-         <CreatableSelect
+          <CreatableSelect
             classNamePrefix="select"
             options={marcas.map(m => ({ label: m, value: m }))}
             onChange={(option) => {
@@ -110,14 +116,12 @@ const onSubmit = async (data) => {
           {errors.marca && <span className="form-error">⚠️ Campo obrigatório</span>}
         </div>
 
-        {/* Modelo */}
         <div className="form-group">
           <label>Modelo</label>
           <input {...register('modelo', { required: true })} placeholder="Escreva o modelo" />
           {errors.modelo && <span className="form-error">⚠️ Campo obrigatório</span>}
         </div>
 
-        {/* Matrícula */}
         <div className="form-group">
           <label>Matrícula</label>
           <input
@@ -153,7 +157,6 @@ const onSubmit = async (data) => {
           {errors.matricula && <span className="form-error">⚠️ {errors.matricula.message}</span>}
         </div>
 
-        {/* Tipo */}
         <div className="form-group">
           <label>Tipo</label>
           <select {...register('tipo', { required: true })}>
@@ -171,7 +174,6 @@ const onSubmit = async (data) => {
           {errors.tipo && <span className="form-error">⚠️ Campo obrigatório</span>}
         </div>
 
-        {/* Ano */}
         <div className="form-group">
           <label>Ano</label>
           <select {...register('ano', { required: true })}>
@@ -183,7 +185,6 @@ const onSubmit = async (data) => {
           {errors.ano && <span className="form-error">⚠️ Campo obrigatório</span>}
         </div>
 
-        {/* Mês da Matrícula */}
         <div className="form-group">
           <label>Mês da Matrícula</label>
           <select {...register('mesEntrada', { required: true })}>
@@ -195,7 +196,6 @@ const onSubmit = async (data) => {
           {errors.mesEntrada && <span className="form-error">⚠️ Campo obrigatório</span>}
         </div>
 
-        {/* Km Atual */}
         <div className="form-group">
           <label>Km Atual</label>
           <input
@@ -211,7 +211,7 @@ const onSubmit = async (data) => {
           </datalist>
           {errors.kmAtual && <span className="form-error">⚠️ Valor inválido</span>}
         </div>
-        {/* Combustível */}
+
         <div className="form-group">
           <label>Combustível</label>
           <select {...register('combustivel')}>
@@ -224,18 +224,37 @@ const onSubmit = async (data) => {
           </select>
         </div>
 
-        {/* Última Inspeção */}
         <div className="form-group">
           <label>Última Inspeção</label>
-          <input type="date" {...register('ultimaInspecao')} />
+          <DatePicker
+            selected={ultimaInspecao}
+            onChange={(date) => setUltimaInspecao(date)}
+            dateFormat="dd/MM/yyyy"
+            placeholderText="Selecionar data"
+            locale="pt"
+            className="input-data"
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
+            maxDate={new Date('2099-12-31')}
+          />
         </div>
 
-        {/* Seguro Até */}
         <div className="form-group">
           <label>Seguro até</label>
-          <input type="date" {...register('seguroAte')} />
-        </div>    
-
+          <DatePicker
+            selected={seguroAte}
+            onChange={(date) => setSeguroAte(date)}
+            dateFormat="dd/MM/yyyy"
+            placeholderText="Selecionar data"
+            locale="pt"
+            className="input-data"
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
+            maxDate={new Date('2099-12-31')}
+          />
+        </div>
       </div>
 
       <button type="submit" className="form-button">Adicionar Veículo</button>

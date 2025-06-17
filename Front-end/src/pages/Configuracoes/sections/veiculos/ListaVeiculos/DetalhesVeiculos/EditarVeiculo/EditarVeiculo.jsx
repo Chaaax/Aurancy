@@ -1,18 +1,30 @@
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useEffect } from 'react';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import pt from 'date-fns/locale/pt';
+import 'react-datepicker/dist/react-datepicker.css';
 import './EditarVeiculo.css';
+
+registerLocale('pt', pt);
 
 export default function EditarVeiculo({ veiculo, onFechar, onAtualizar }) {
   const {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors }
   } = useForm();
 
   useEffect(() => {
     if (veiculo) {
-      Object.entries(veiculo).forEach(([chave, valor]) => setValue(chave, valor));
+      Object.entries(veiculo).forEach(([chave, valor]) => {
+        if (chave === 'ultimaInspecao' || chave === 'seguroAte') {
+          setValue(chave, valor ? new Date(valor) : null);
+        } else {
+          setValue(chave, valor);
+        }
+      });
     }
   }, [veiculo, setValue]);
 
@@ -64,8 +76,37 @@ export default function EditarVeiculo({ veiculo, onFechar, onAtualizar }) {
             <option value="GPL">GPL</option>
           </select>
 
-          <input type="date" {...register('ultimaInspecao')} />
-          <input type="date" {...register('seguroAte')} />
+          <Controller
+            control={control}
+            name="ultimaInspecao"
+            render={({ field }) => (
+              <DatePicker
+                placeholderText="Última Inspeção"
+                selected={field.value}
+                onChange={field.onChange}
+                dateFormat="dd/MM/yyyy"
+                locale="pt"
+                className="input-data"
+                maxDate={new Date('2099-12-31')}
+              />
+            )}
+          />
+
+          <Controller
+            control={control}
+            name="seguroAte"
+            render={({ field }) => (
+              <DatePicker
+                placeholderText="Seguro até"
+                selected={field.value}
+                onChange={field.onChange}
+                dateFormat="dd/MM/yyyy"
+                locale="pt"
+                className="input-data"
+                maxDate={new Date('2099-12-31')}
+              />
+            )}
+          />
 
           <div className="modal-buttons">
             <button type="submit" className="salvar">Guardar</button>
@@ -76,3 +117,4 @@ export default function EditarVeiculo({ veiculo, onFechar, onAtualizar }) {
     </div>
   );
 }
+

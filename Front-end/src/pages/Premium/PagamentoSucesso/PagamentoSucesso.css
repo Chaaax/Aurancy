@@ -50,3 +50,23 @@
     transform: translateY(0);
   }
 }
+
+.btn-ir-premium {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #7c3aed, #9333ea);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 12px #9333ea88;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn-ir-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px #a855f799;
+  background: linear-gradient(to right, #a855f7, #9333ea);
+}

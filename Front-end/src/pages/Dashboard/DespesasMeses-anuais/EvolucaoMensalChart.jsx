@@ -44,7 +44,7 @@ export default function EvolucaoMensalChart() {
 
   return (
     <div className="grafico-evolucao">
-      <h2>Evolução Mensal das Despesas - {ano}</h2>
+      <h2 className="titulo-glow">Evolução Mensal das Despesas - {ano}</h2>
 
       <div className="selecao-ano">
         <select value={ano} onChange={(e) => setAno(Number(e.target.value))}>
@@ -55,7 +55,7 @@ export default function EvolucaoMensalChart() {
       </div>
 
       {loading ? <p>A carregar...</p> : erro ? <p className="erro">{erro}</p> : (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={360}>
           <BarChart data={dados}>
             <XAxis 
               dataKey="mes" 

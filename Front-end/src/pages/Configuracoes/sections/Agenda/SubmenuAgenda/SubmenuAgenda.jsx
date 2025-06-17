@@ -1,14 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './SubmenuAgenda.css'
 import AgendaFinanceira from '../../../../../components/Agenda/AgendaFinanceira'
 import FormEventoFinanceiro from './FormregistarAgenda/FormEventoFinanceiro'
-import { useSearchParams } from 'react-router-dom'
-import '../submenu-base.css';
+import '../submenu-base.css'
 
-
-
-export default function SubmenuAgenda() {
+export default function SubmenuAgenda({ subsecaoInicial = '' }) {
   const [secaoAtiva, setSecaoAtiva] = useState('')
+
+  useEffect(() => {
+    if (subsecaoInicial === 'agendar' || subsecaoInicial === 'consultar') {
+      setSecaoAtiva(subsecaoInicial)
+    }
+  }, [subsecaoInicial])
 
   const opcoes = [
     { key: 'agendar', label: 'Agendar evento' },
@@ -34,12 +37,7 @@ export default function SubmenuAgenda() {
       </div>
 
       <div className="submenu-content">
-        {secaoAtiva === 'agendar' && (
-            <div>
-                <FormEventoFinanceiro />
-            </div>
-        )}
-
+        {secaoAtiva === 'agendar' && <FormEventoFinanceiro />}
         {secaoAtiva === 'consultar' && <AgendaFinanceira />}
       </div>
     </div>

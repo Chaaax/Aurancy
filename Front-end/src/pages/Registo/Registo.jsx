@@ -2,6 +2,9 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registar, login as loginAPI } from '../../api/api';
 import { AuthContext } from '../../context/AuthContext';
+import ParticlesBackground from '../../components/ParticlesBackground';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import './Registo.css';
 
 function Registo() {
@@ -10,7 +13,7 @@ function Registo() {
     password: '',
     confirmPassword: '',
     fullName: '',
-    birthDate: '',
+    birthDate: null,
     country: '',
     phone: '',
     profile: '',
@@ -43,6 +46,7 @@ function Registo() {
 
   return (
     <div className="registo-page-wrapper">
+      <ParticlesBackground />
       <div className="registo-container">
         <h2 className="registo-title">Cria a tua conta na Aundancy</h2>
         <form onSubmit={handleSubmit} className="registo-form">
@@ -52,7 +56,14 @@ function Registo() {
           <input name="confirmPassword" type="password" placeholder="Confirmar password" onChange={handleChange} required />
 
           <div className="registo-row">
-            <input name="birthDate" type="date" onChange={handleChange} required />
+            <DatePicker
+              selected={form.birthDate}
+              onChange={(date) => setForm({ ...form, birthDate: date })}
+              dateFormat="dd/MM/yyyy"
+              placeholderText="Data de nascimento"
+              className="custom-datepicker"
+              required
+            />
             <input name="country" type="text" placeholder="País" onChange={handleChange} required />
           </div>
 
@@ -73,7 +84,7 @@ function Registo() {
             <option value="professional">Profissional</option>
             <option value="investor">Investidor</option>
             <option value="retired">Reformado</option>
-            <option value="retired">Outro</option>
+            <option value="other">Outro</option>
           </select>
 
           <div className="registo-checkbox">
@@ -82,7 +93,6 @@ function Registo() {
               Aceito os <a href="#">termos e condições</a>
             </label>
           </div>
-
 
           <button type="submit" className="registo-btn">Registar</button>
         </form>

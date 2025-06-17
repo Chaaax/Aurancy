@@ -1,44 +1,57 @@
 .formulario-saving {
-  background: linear-gradient(135deg, #1b1f3a, #2a2e4d);
-  color: #ffffff;
+  background: linear-gradient(135deg, #1e1b36, #2a1848);
+  color: #f3f4f6;
   padding: 30px;
   border-radius: 20px;
   max-width: 600px;
   margin: 0 auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
   font-family: 'Segoe UI', sans-serif;
 }
 
 .formulario-saving h2 {
   font-size: 26px;
   margin-bottom: 10px;
+  color: #c084fc;
+  text-shadow: 0 0 6px #a855f7;
 }
 
 .formulario-saving p {
   font-size: 14px;
   margin-bottom: 25px;
-  color: #b3b3b3;
+  color: #cbd5e1;
 }
 
 .formulario-saving label {
   font-weight: 600;
   display: block;
   margin-bottom: 8px;
+  color: #e0d9ff;
 }
 
 .formulario-saving input[type="text"],
 .formulario-saving input[type="number"] {
   width: 100%;
   padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background: #2c2f4a;
-  color: #fff;
+  border-radius: 10px;
+  border: 1px solid #4c1d95;
+  background: #111827;
+  color: #f9fafb;
   margin-bottom: 20px;
+  box-shadow: 0 0 6px rgba(139, 92, 246, 0.2);
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.formulario-saving input[type="text"]:focus,
+.formulario-saving input[type="number"]:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+  outline: none;
 }
 
 .formulario-saving input[type="checkbox"],
 .formulario-saving input[type="radio"] {
+  accent-color: #9333ea;
   margin-right: 8px;
 }
 
@@ -49,54 +62,62 @@
   gap: 10px;
   font-size: 14px;
   margin-bottom: 20px;
+  color: #e2e8f0;
 }
 
 .formulario-saving button {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  background: linear-gradient(90deg, #7c3aed, #9333ea);
   border: none;
   border-radius: 10px;
   color: white;
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .formulario-saving button:hover {
-  background: linear-gradient(90deg, #00aaff, #0055cc);
+  background: linear-gradient(90deg, #9333ea, #a855f7);
+  transform: scale(1.02);
 }
 
 .error-text {
-  color: #ff6b6b;
+  color: #f87171;
   font-size: 13px;
   margin-top: 4px;
   display: block;
 }
 
 .formulario-colapsado-card {
-  background: #56067a;
-  border: 1px solid #ccc;
+  background: #1f1b38;
+  border: 1px solid #7e22ce;
   padding: 16px;
   border-radius: 12px;
   margin-top: 16px;
   text-align: center;
+  color: #f3f4f6;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
 }
 
 .btn-esconder-formulario,
 .btn-mostrar-formulario {
   margin-top: 12px;
-  padding: 8px 16px;
+  padding: 10px 20px;
   border: none;
-  background-color: #007acc;
-  color: rgb(53, 39, 236);
+  background-color: #7c3aed;
+  color: #ffffff;
   font-weight: bold;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.25);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .btn-esconder-formulario:hover,
 .btn-mostrar-formulario:hover {
-  background-color: #005fa3;
+  background-color: #9333ea;
+  transform: scale(1.03);
 }

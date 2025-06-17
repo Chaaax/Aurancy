@@ -1,11 +1,15 @@
 .form-veiculo {
-  background-color: #111827;
+  background: linear-gradient(135deg, rgba(40, 20, 80, 0.9), rgba(20, 10, 50, 0.95));
   padding: 3rem;
+  margin-top: 5rem;
   border-radius: 30px;
-  color: #e5e7eb;
+  color: #f3f4f6;
   max-width: 700px;
   margin-left: 2rem;
   min-width: 700px;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
+  border: 1px solid #7e22ce;
+  backdrop-filter: blur(6px);
 }
 
 .form-grid {
@@ -22,75 +26,81 @@
 }
 
 .form-group label {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
   font-weight: 500;
   color: #d1d5db;
 }
 
 .form-group input,
 .form-group select {
-  padding: 0.6rem;
-  border-radius: 6px;
-  border: 1px solid #374151;
-  background-color: #1f2937;
-  color: white;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.form-group input:hover,
-.form-group select:hover {
-  background-color: #273549;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #4c1d95;
+  background-color: #111827;
+  color: #f9fafb;
+  font-size: 0.95rem;
+  box-shadow: 0 0 5px rgba(168, 85, 247, 0.15);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-group input:focus,
 .form-group select:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
   outline: none;
-  border-color: #2563eb;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1); /* para ícone visível no fundo escuro */
+  filter: invert(1);
 }
 
 .form-error {
   color: #f87171;
   font-size: 0.85rem;
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 }
 
 .form-button {
   margin-top: 2rem;
-  padding: 0.8rem 1.5rem;
-  background-color: #2563eb;
-  color: white;
-  font-weight: bold;
+  padding: 0.85rem 1.5rem;
+  background-color: #7c3aed;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+  border: 1px solid #9333ea;
 }
 
 .form-button:hover {
-  background-color: #1d4ed8;
+  background-color: #9333ea;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
 }
 
 /* Secção opcional (ex: combustivel, seguro, inspeção) */
 .form-section-optional {
-  margin-top: 1.5rem;
+  margin-top: 1.8rem;
   padding-top: 1.2rem;
-  border-top: 1px dashed #374151;
+  border-top: 1px dashed #6b21a8;
   grid-column: span 2;
 }
 
 /* Estilos personalizados para react-select */
 .select__control {
-  background-color: #1f2937 !important;
-  border-color: #374151 !important;
+  background-color: #111827 !important;
+  border: 1px solid #4c1d95 !important;
   color: white !important;
-  min-height: 38px;
-  min-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
+  border-radius: 10px !important;
+  min-height: 40px;
+  box-shadow: 0 0 5px rgba(168, 85, 247, 0.2);
+}
+
+.select__control--is-focused {
+  border-color: #a855f7 !important;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3) !important;
 }
 
 .select__single-value,
@@ -100,29 +110,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .select__menu {
   background-color: #1f2937 !important;
-  color: #fff !important;
+  color: white !important;
   z-index: 100 !important;
-}
-
-.select__menu-list {
-  max-height: 200px !important;
-  overflow-y: auto !important;
-  scrollbar-width: thin;
+  border-radius: 10px !important;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.2);
 }
 
 .select__option {
   background-color: #1f2937 !important;
   color: white !important;
+  transition: background 0.2s;
 }
 
 .select__option--is-focused {
-  background-color: #3b82f6 !important;
-  color: white !important;
+  background-color: #4c1d95 !important;
 }
 
 .select__option--is-selected {
-  background-color: #2563eb !important;
-  color: white !important;
+  background-color: #9333ea !important;
+  color: #fff !important;
 }
 
 /* Mobile friendly */
@@ -137,4 +143,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     max-width: 100%;
   }
 }
+
 

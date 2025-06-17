@@ -1,16 +1,20 @@
 .form-despesa-container {
-  background-color: #1f2937;
+  background-color: rgba(40, 20, 80, 0.856);
   padding: 2rem;
   border-radius: 25px;
   max-width: 500px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 25px rgba(138, 92, 246, 0.452);
   margin-top: 3rem;
   margin-left: 2rem;
+  backdrop-filter: blur(6px);
+  color: #f9fafb;
+  border: 1px solid #7e22ce;
 }
 
 .form-despesa-container h2 {
-  color: #f3f4f6;
+  color: #f9f9ff;
   margin-bottom: 1.5rem;
+  text-shadow: 0 0 6px #a855f7;
 }
 
 .form-despesa-container input,
@@ -19,18 +23,25 @@
   width: 100%;
   padding: 12px;
   margin-bottom: 1rem;
-  border-radius: 8px;
-  background-color: #111827;
-  color: #f3f4f6;
-  border: 1px solid #374151;
+  border-radius: 10px;
+  background-color: #0e0f1a;
+  color: #e5e7eb;
+  border: 1px solid #5b21b6;
   font-size: 1rem;
   box-sizing: border-box;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-despesa-container input:focus,
+.form-despesa-container select:focus,
+.form-despesa-container textarea:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 6px #a855f7;
+  outline: none;
 }
 
 .form-despesa-container select {
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
 .form-despesa-container textarea {
@@ -42,24 +53,26 @@
   display: block;
   margin-bottom: 0.4rem;
   font-size: 0.95rem;
-  color: #d1d5db;
+  color: #d1c8e6;
 }
 
 .form-despesa-container button {
-  background-color: #3b82f6;
-  color: #fff;
+  background-color: #7c3aed;
+  color: white;
   padding: 14px;
   font-weight: bold;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 100%;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
 }
 
 .form-despesa-container button:hover {
-  background-color: #2563eb;
+  background-color: #9333ea;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
 }
 
 .form-despesa-container .erro {
@@ -74,65 +87,60 @@
   margin-top: 0.5rem;
 }
 
-
-/*calendario*/
-/* Calendário principal */
+/* Calendário */
 .react-datepicker {
-  background-color: #1f2937 !important;
+  background-color: #1b1430 !important;
   border-radius: 10px !important;
   color: #e5e7eb !important;
   font-size: 14px !important;
   border: none !important;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.3) !important;
 }
 
 .react-datepicker__header {
-  background-color: #111827 !important;
-  border-bottom: 1px solid #374151 !important;
+  background-color: #150c2e !important;
+  border-bottom: 1px solid #5b21b6 !important;
   padding: 0.75rem 1rem !important;
 }
 
 .react-datepicker__current-month,
 .react-datepicker__day-name,
 .react-datepicker__day {
-  color: #e5e7eb !important;
+  color: #e0d9ff !important;
   font-weight: 500 !important;
 }
 
 .react-datepicker__day--selected,
 .react-datepicker__day--keyboard-selected {
-  background-color: #3b82f6 !important;
+  background-color: #a855f7 !important;
   color: #fff !important;
   border-radius: 50% !important;
 }
 
 .react-datepicker__day--today {
-  border: 1px solid #3b82f6 !important;
+  border: 1px solid #9333ea !important;
   border-radius: 50% !important;
 }
 
 .react-datepicker__navigation {
   top: 10px !important;
-  width: 28px !important;
-  height: 28px !important;
   background: transparent !important;
   border: none !important;
 }
 
 .react-datepicker__navigation-icon::before {
-  border-color: #3b82f6 !important;
-  border-width: 2px 2px 0 0 !important;
+  border-color: #a855f7 !important;
 }
 
 .react-datepicker__month-select,
 .react-datepicker__year-select {
-  background-color: #1f2937 !important;
+  background-color: #1b1430 !important;
   color: #e5e7eb !important;
-  border: 1px solid #374151 !important;
+  border: 1px solid #5b21b6 !important;
   border-radius: 6px !important;
   padding: 6px 8px !important;
-  font-size: 14px !important;
 }
+
 .input-wrapper {
   margin-bottom: 1rem;
 }
@@ -144,5 +152,5 @@
 }
 
 .calendar-icon {
-  color: #9ca3af !important;
+  color: #c084fc !important;
 }

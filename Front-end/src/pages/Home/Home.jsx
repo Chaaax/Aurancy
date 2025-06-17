@@ -49,7 +49,7 @@ function Home() {
             />
             <div className="slideshow-overlay">
               <h1 className="scroll-fade-up">Bem-vindo</h1>
-              <p className="scroll-fade-up">Gerencie suas finanças com estilo e inteligência.</p>
+              <p className="scroll-fade-up">Domine as suas finanças com estilo e inteligência.</p>
               <button className="scroll-fade-up" onClick={() => (window.location.href = '/login')}>Entrar</button>
             </div>
           </div>

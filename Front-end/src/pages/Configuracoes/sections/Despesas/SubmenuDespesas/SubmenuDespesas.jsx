@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './SubmenuDespesas.css'
 import FormDespesas from './FormDespesas/FormDespesas'
+import MostrarDespesas from './Despesas/MostrarDespesas'
 
 
 export default function SubmenuDespesas() {
@@ -32,7 +33,7 @@ export default function SubmenuDespesas() {
       <div className="submenu-content">
         {secaoAtiva === 'registar' && <FormDespesas />}
         {secaoAtiva === 'consultar' && (
-          <p style={{ color: '#e5e7eb' }}>📄 Aqui vamos mostrar a lista de despesas</p>
+          <p style={{ color: '#e5e7eb' }}><MostrarDespesas/></p>
         )}
       </div>
     </div>

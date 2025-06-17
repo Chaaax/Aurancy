@@ -1,28 +1,28 @@
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const prisma = require('../prismaClient')
-const multer = require('multer')
-const streamifier = require('streamifier')
-const { cloudinary } = require('../config/cloudinaryConfig')
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const prisma = require('../prismaClient');
+const multer = require('multer');
+const streamifier = require('streamifier');
+const { cloudinary } = require('../config/cloudinaryConfig');
 
-const upload = multer({ storage: multer.memoryStorage() })
+const upload = multer({ storage: multer.memoryStorage() });
 
 // Função de registo
 const register = async (req, res) => {
-  const { email, password, fullName, birthDate, country, phone, currency, profile } = req.body
+  const { email, password, fullName, birthDate, country, phone, currency, profile } = req.body;
 
   if (!email || !password || !fullName || !birthDate || !country || !phone) {
-    return res.status(400).json({ error: 'Todos os campos são obrigatórios.' })
+    return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
   }
 
   try {
-    const userExists = await prisma.user.findUnique({ where: { email } })
+    const userExists = await prisma.user.findUnique({ where: { email } });
 
     if (userExists) {
-      return res.status(409).json({ error: 'Email já registado.' })
+      return res.status(409).json({ error: 'Email já registado.' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     await prisma.user.create({
       data: {
@@ -35,43 +35,43 @@ const register = async (req, res) => {
         currency,
         profile,
       },
-    })
+    });
 
-    res.status(201).json({ message: 'Registo concluído com sucesso!' })
+    res.status(201).json({ message: 'Registo concluído com sucesso!' });
   } catch (error) {
-    console.error('Erro ao registar:', error)
-    res.status(500).json({ error: 'Erro interno ao registar.' })
+    console.error('Erro ao registar:', error);
+    res.status(500).json({ error: 'Erro interno ao registar.' });
   }
-}
+};
 
 // Função de login
 const login = async (req, res) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ error: 'Email e password são obrigatórios.' })
+    return res.status(400).json({ error: 'Email e password são obrigatórios.' });
   }
 
   try {
-    const user = await prisma.user.findUnique({ where: { email } })
+    const user = await prisma.user.findUnique({ where: { email } });
 
     if (!user) {
-      return res.status(401).json({ error: 'Credenciais inválidas.' })
+      return res.status(401).json({ error: 'Credenciais inválidas.' });
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password)
+    const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
-      return res.status(401).json({ error: 'Credenciais inválidas.' })
+      return res.status(401).json({ error: 'Credenciais inválidas.' });
     }
 
     const token = jwt.sign(
       { userId: user.id },
       process.env.JWT_SECRET,
       { expiresIn: '30d' }
-    )
+    );
 
-   res.status(200).json({
+    res.status(200).json({
       message: 'Login bem-sucedido!',
       token,
       user: {
@@ -80,12 +80,12 @@ const login = async (req, res) => {
         fullName: user.fullName,
         premium: user.premium
       }
-    })
+    });
   } catch (error) {
-    console.error('Erro ao fazer login:', error)
-    res.status(500).json({ error: 'Erro interno ao fazer login.' })
+    console.error('Erro ao fazer login:', error);
+    res.status(500).json({ error: 'Erro interno ao fazer login.' });
   }
-}
+};
 
 // GET /api/auth/me
 const getMe = async (req, res) => {
@@ -111,10 +111,33 @@ const getMe = async (req, res) => {
       return res.status(404).json({ error: 'Utilizador não encontrado.' });
     }
 
-    res.status(200).json(user); // profilePicture já é URL pública
+    res.status(200).json(user);
   } catch (error) {
     console.error('Erro ao obter utilizador:', error);
     res.status(500).json({ error: 'Erro interno.' });
+  }
+};
+
+// PUT /api/auth/update-profile
+const updateProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { fullName, phone, country, currency } = req.body;
+
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        fullName,
+        phone,
+        country,
+        currency
+      },
+    });
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.error('Erro ao atualizar perfil:', error);
+    res.status(500).json({ error: 'Erro ao atualizar os dados do perfil.' });
   }
 };
 
@@ -133,28 +156,28 @@ const getUserProfile = async (req, res) => {
         currency: true,
         profile: true,
       },
-    })
+    });
 
     if (!user) {
-      return res.status(404).json({ error: 'Utilizador não encontrado.' })
+      return res.status(404).json({ error: 'Utilizador não encontrado.' });
     }
 
-    res.json(user)
+    res.json(user);
   } catch (error) {
-    console.error('Erro ao buscar o perfil do utilizador:', error)
-    res.status(500).json({ error: 'Erro ao obter o perfil.' })
+    console.error('Erro ao buscar o perfil do utilizador:', error);
+    res.status(500).json({ error: 'Erro ao obter o perfil.' });
   }
-}
+};
 
 // POST /api/auth/upload-profile-picture
 const uploadProfilePicture = [
   upload.single('image'),
   async (req, res) => {
     try {
-      const userId = req.user.id
+      const userId = req.user.id;
 
       if (!req.file) {
-        return res.status(400).json({ error: 'Nenhuma imagem foi enviada.' })
+        return res.status(400).json({ error: 'Nenhuma imagem foi enviada.' });
       }
 
       const streamUpload = () => {
@@ -168,51 +191,50 @@ const uploadProfilePicture = [
             },
             (error, result) => {
               if (result) {
-                resolve(result)
+                resolve(result);
               } else {
-                reject(error)
+                reject(error);
               }
             }
-          )
+          );
 
-          streamifier.createReadStream(req.file.buffer).pipe(stream)
-        })
-      }
+          streamifier.createReadStream(req.file.buffer).pipe(stream);
+        });
+      };
 
-      const result = await streamUpload()
+      const result = await streamUpload();
 
       await prisma.user.update({
         where: { id: userId },
         data: {
-          profilePicture: result.secure_url, // guardamos o link direto
+          profilePicture: result.secure_url,
         },
-      })
-
-      res.status(200).json({ imageUrl: result.secure_url })
-    } catch (error) {
-      console.error('Erro ao fazer upload da imagem:', error)
-      res.status(500).json({ error: 'Erro ao guardar imagem.' })
-    }
-  }
-]
-
-  // Ativa o Premium para o utilizador autenticado
-  const ativarPremium = async (req, res) => {
-    try {
-      const userId = req.user.id;
-
-      await prisma.user.update({
-        where: { id: userId },
-        data: { premium: true }
       });
 
-      res.status(200).json({ message: 'Aurancy Premium ativado com sucesso.' });
+      res.status(200).json({ imageUrl: result.secure_url });
     } catch (error) {
-      console.error('Erro ao ativar premium:', error);
-      res.status(500).json({ error: 'Erro ao ativar Aurancy Premium.' });
+      console.error('Erro ao fazer upload da imagem:', error);
+      res.status(500).json({ error: 'Erro ao guardar imagem.' });
     }
-  };
+  }
+];
 
+// PUT /api/auth/ativar-premium
+const ativarPremium = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    await prisma.user.update({
+      where: { id: userId },
+      data: { premium: true }
+    });
+
+    res.status(200).json({ message: 'Aurancy Premium ativado com sucesso.' });
+  } catch (error) {
+    console.error('Erro ao ativar premium:', error);
+    res.status(500).json({ error: 'Erro ao ativar Aurancy Premium.' });
+  }
+};
 
 module.exports = {
   register,
@@ -221,4 +243,5 @@ module.exports = {
   getUserProfile,
   uploadProfilePicture,
   ativarPremium,
-}
+  updateProfile
+};

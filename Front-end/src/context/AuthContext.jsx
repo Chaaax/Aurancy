@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); // <- novo estado
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -12,7 +13,6 @@ export function AuthProvider({ children }) {
     if (token) {
       setIsAuthenticated(true);
 
-      // Vai buscar os dados atualizados do utilizador
       fetch('http://localhost:3000/api/auth/me', {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -27,14 +27,17 @@ export function AuthProvider({ children }) {
             console.warn('Token inválido. Logout automático.');
             logout();
           }
+          setLoading(false); // <- marca como carregado após a verificação
         })
         .catch((err) => {
           console.error('Erro ao obter utilizador:', err);
           logout();
+          setLoading(false); // <- mesmo em erro
         });
     } else {
       setIsAuthenticated(false);
       setUser(null);
+      setLoading(false); // <- sem token, mas já carregado
     }
   }, []);
 
@@ -53,9 +56,10 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
 }
+
 

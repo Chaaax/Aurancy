@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login as loginAPI } from '../../api/api';
 import { AuthContext } from '../../context/AuthContext';
+import ParticlesBackground from '../../components/ParticlesBackground'; // importa fundo
 import './Login.css';
 
 function Login() {
@@ -14,10 +15,9 @@ function Login() {
     e.preventDefault();
 
     try {
-      const resposta = await loginAPI(email, password); // envia email + password
+      const resposta = await loginAPI(email, password);
       const token = resposta.token;
 
-      // Vai buscar o utilizador autenticado ao backend
       const res = await fetch('http://localhost:3000/api/auth/me', {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -30,7 +30,6 @@ function Login() {
 
       const user = await res.json();
 
-      // Guarda no contexto o token e o utilizador
       login(token, user);
       navigate('/dashboard');
     } catch (error) {
@@ -39,30 +38,34 @@ function Login() {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Entrar na tua conta</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Palavra-passe"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Entrar</button>
-      </form>
+    <div className="login-page-wrapper">
+      <ParticlesBackground />
+      <div className="auth-container">
+        <h2>Entrar na tua conta</h2>
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Palavra-passe"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
     </div>
   );
 }
 
 export default Login;
+
 
 
 
